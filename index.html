@@ -1,0 +1,860 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CHEM 102 — Study Hub</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #0d0d0f;
+  --surface: #17171a;
+  --surface2: #1e1e23;
+  --border: rgba(255,255,255,0.07);
+  --border2: rgba(255,255,255,0.12);
+  --text: #f0eff5;
+  --muted: #7a7a8c;
+  --muted2: #4a4a5a;
+  --purple: #7c6ef7;
+  --purple-light: #a89cf9;
+  --purple-dim: rgba(124,110,247,0.15);
+  --orange: #e8622a;
+  --orange-dim: rgba(232,98,42,0.15);
+  --green: #2de07e;
+  --green-dim: rgba(45,224,126,0.12);
+  --red: #f05454;
+  --red-dim: rgba(240,84,84,0.12);
+  --amber: #f0a832;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body { font-family: 'DM Sans', sans-serif; background: var(--bg); color: var(--text); min-height: 100vh; overflow-x: hidden; }
+
+/* ── LANDING ── */
+#landing { display: block; }
+#exam-game { display: none; }
+#lab-game { display: none; }
+
+/* noise overlay */
+body::before {
+  content: '';
+  position: fixed; inset: 0; z-index: 0; pointer-events: none;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  opacity: 0.5;
+}
+
+.wrap { position: relative; z-index: 1; max-width: 1100px; margin: 0 auto; padding: 0 2rem; }
+
+/* hero */
+.hero { padding: 5rem 0 3rem; text-align: center; }
+.pill {
+  display: inline-flex; align-items: center; gap: 8px;
+  background: var(--surface2); border: 0.5px solid var(--border2);
+  border-radius: 100px; padding: 6px 16px 6px 10px;
+  font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); font-family: 'Syne', sans-serif; font-weight: 600;
+  margin-bottom: 2rem;
+}
+.pill-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--purple); box-shadow: 0 0 8px var(--purple); }
+
+.hero h1 {
+  font-family: 'Syne', sans-serif; font-weight: 800;
+  font-size: clamp(3rem, 7vw, 5.5rem); line-height: 1.0;
+  letter-spacing: -0.03em; color: var(--text);
+  margin-bottom: 1rem;
+}
+.hero h1 span { color: var(--purple-light); }
+
+.hero p { font-size: 1.05rem; color: var(--muted); max-width: 480px; margin: 0 auto 3rem; line-height: 1.6; }
+
+/* stats */
+.stats { display: flex; justify-content: center; gap: 3rem; margin-bottom: 4rem; }
+.stat-item { text-align: center; }
+.stat-num { font-family: 'Syne', sans-serif; font-size: 2rem; font-weight: 700; color: var(--purple-light); }
+.stat-lbl { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-top: 2px; font-family: 'Syne', sans-serif; font-weight: 600; }
+
+/* section label */
+.section-lbl { font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted2); font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 1.25rem; }
+
+/* cards */
+.cards { display: grid; grid-template-columns: 1fr 1fr; gap: 1.25rem; margin-bottom: 5rem; }
+@media (max-width: 700px) { .cards { grid-template-columns: 1fr; } }
+
+.game-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  border-radius: 18px; padding: 1.75rem; position: relative; overflow: hidden;
+  transition: border-color 0.2s, transform 0.2s;
+}
+.game-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+
+.card-glow-exam { position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: var(--purple-dim); filter: blur(60px); pointer-events: none; }
+.card-glow-lab  { position: absolute; top: -60px; right: -60px; width: 200px; height: 200px; border-radius: 50%; background: var(--orange-dim); filter: blur(60px); pointer-events: none; }
+
+.card-top { display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 1.25rem; }
+.card-icon { width: 42px; height: 42px; border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 20px; }
+.icon-exam { background: var(--purple-dim); }
+.icon-lab  { background: var(--orange-dim); }
+.card-badge { font-size: 10px; font-family: 'Syne', sans-serif; font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; padding: 4px 10px; border-radius: 100px; border: 0.5px solid; }
+.badge-exam { color: var(--purple-light); border-color: rgba(124,110,247,0.3); background: var(--purple-dim); }
+.badge-lab  { color: #f0a054; border-color: rgba(232,98,42,0.3); background: var(--orange-dim); }
+
+.game-card h2 { font-family: 'Syne', sans-serif; font-size: 1.4rem; font-weight: 700; margin-bottom: 0.5rem; }
+.game-card p  { font-size: 0.875rem; color: var(--muted); line-height: 1.55; margin-bottom: 1.5rem; }
+
+.card-stats { display: flex; gap: 1.5rem; margin-bottom: 1.5rem; }
+.cs { }
+.cs-num { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; }
+.cs-lbl { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); font-family: 'Syne', sans-serif; margin-top: 1px; }
+
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 1.75rem; }
+.tag { font-size: 11px; padding: 4px 10px; border-radius: 100px; border: 0.5px solid var(--border2); color: var(--muted); background: var(--surface2); }
+
+.launch-btn {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-family: 'Syne', sans-serif; font-weight: 600; font-size: 0.875rem;
+  padding: 11px 22px; border-radius: 10px; border: none; cursor: pointer;
+  transition: opacity 0.15s, transform 0.15s;
+}
+.launch-btn:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-exam { background: var(--purple); color: #fff; }
+.btn-lab  { background: var(--orange); color: #fff; }
+.card-footer { display: flex; align-items: center; justify-content: space-between; }
+.card-range { font-size: 11px; color: var(--muted2); font-family: 'Syne', sans-serif; }
+
+/* ── GAME SCREENS ── */
+.game-screen { min-height: 100vh; padding: 0; }
+
+.game-nav {
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 2rem; border-bottom: 0.5px solid var(--border);
+  background: var(--surface); position: sticky; top: 0; z-index: 10;
+}
+.nav-back {
+  font-size: 13px; color: var(--muted); background: none; border: none; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; display: flex; align-items: center; gap: 6px;
+  transition: color 0.15s;
+}
+.nav-back:hover { color: var(--text); }
+.nav-title { font-family: 'Syne', sans-serif; font-size: 0.9rem; font-weight: 700; color: var(--text); }
+.nav-score { font-size: 13px; font-family: 'Syne', sans-serif; font-weight: 600; }
+
+/* topic selector */
+.selector-wrap { max-width: 820px; margin: 0 auto; padding: 2rem; }
+.sel-heading { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 0.4rem; }
+.sel-sub { font-size: 0.875rem; color: var(--muted); margin-bottom: 2rem; }
+
+.exam-group { margin-bottom: 2rem; }
+.group-label { font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted2); font-family: 'Syne', sans-serif; font-weight: 600; margin-bottom: 0.75rem; }
+.topic-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+.topic-card {
+  background: var(--surface); border: 0.5px solid var(--border);
+  border-radius: 10px; padding: 0.75rem 1rem; cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+.topic-card:hover { border-color: var(--border2); }
+.topic-card.sel-exam { border-color: var(--purple); background: var(--purple-dim); }
+.topic-card.sel-lab  { border-color: var(--orange); background: var(--orange-dim); }
+.tc-code { font-size: 10px; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.08em; margin-bottom: 3px; }
+.tc-code-exam { color: var(--purple-light); }
+.tc-code-lab  { color: #f0a054; }
+.tc-name { font-size: 12.5px; color: var(--text); line-height: 1.3; }
+.tc-count { font-size: 11px; color: var(--muted2); margin-top: 3px; }
+
+.mode-row { display: flex; gap: 8px; margin-bottom: 1.75rem; }
+.mode-btn {
+  padding: 8px 18px; border-radius: 8px; border: 0.5px solid var(--border2);
+  background: var(--surface); color: var(--muted); font-family: 'DM Sans', sans-serif; font-size: 13px; cursor: pointer; transition: all 0.15s;
+}
+.mode-btn:hover { color: var(--text); }
+.mode-btn.active-exam { border-color: var(--purple); background: var(--purple-dim); color: var(--purple-light); font-weight: 500; }
+.mode-btn.active-lab  { border-color: var(--orange); background: var(--orange-dim); color: #f0a054; font-weight: 500; }
+
+.sel-controls { display: flex; align-items: center; gap: 10px; margin-top: 1.5rem; flex-wrap: wrap; }
+.ctrl-btn { padding: 10px 22px; border-radius: 9px; border: 0.5px solid var(--border2); background: var(--surface); color: var(--muted); font-size: 13px; font-family: 'DM Sans', sans-serif; cursor: pointer; transition: all 0.15s; }
+.ctrl-btn:hover { color: var(--text); border-color: var(--border); }
+.start-btn-exam { background: var(--purple) !important; color: #fff !important; border-color: var(--purple) !important; font-weight: 600; }
+.start-btn-lab  { background: var(--orange) !important; color: #fff !important; border-color: var(--orange) !important; font-weight: 600; }
+.ctrl-btn:disabled { opacity: 0.35; cursor: not-allowed; }
+.sel-count-text { font-size: 13px; color: var(--muted); }
+
+/* quiz area */
+.quiz-wrap { max-width: 640px; margin: 0 auto; padding: 2rem; }
+
+.prog-bar-bg { height: 3px; background: var(--surface2); border-radius: 2px; margin-bottom: 2rem; }
+.prog-bar-fill { height: 3px; border-radius: 2px; transition: width 0.4s ease; }
+.pb-exam { background: var(--purple); }
+.pb-lab  { background: var(--orange); }
+
+.q-meta-tag { font-size: 10px; font-family: 'Syne', sans-serif; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.75rem; }
+.qm-exam { color: var(--purple-light); }
+.qm-lab  { color: #f0a054; }
+
+.q-text { font-family: 'Syne', sans-serif; font-size: 1.2rem; font-weight: 600; line-height: 1.45; margin-bottom: 1.5rem; color: var(--text); }
+
+.choices { display: flex; flex-direction: column; gap: 8px; }
+.choice-btn {
+  background: var(--surface); border: 0.5px solid var(--border2);
+  border-radius: 10px; padding: 13px 16px; text-align: left; cursor: pointer;
+  font-family: 'DM Sans', sans-serif; font-size: 14px; color: var(--text);
+  transition: border-color 0.15s, background 0.15s; line-height: 1.4;
+}
+.choice-btn:hover:not(:disabled) { border-color: var(--border); background: var(--surface2); }
+.choice-btn.correct { border-color: var(--green) !important; background: var(--green-dim) !important; color: var(--green); }
+.choice-btn.wrong   { border-color: var(--red) !important; background: var(--red-dim) !important; color: var(--red); }
+.choice-btn:disabled { cursor: default; }
+
+.feedback-box { margin-top: 1rem; padding: 1rem 1.25rem; border-radius: 10px; font-size: 14px; line-height: 1.55; display: none; }
+.fb-correct { background: var(--green-dim); border: 0.5px solid rgba(45,224,126,0.2); color: #6ef0a8; }
+.fb-wrong   { background: rgba(240,168,50,0.1); border: 0.5px solid rgba(240,168,50,0.2); color: var(--amber); }
+
+.next-btn {
+  margin-top: 1.25rem; padding: 11px 26px; border-radius: 10px; border: none;
+  font-family: 'Syne', sans-serif; font-weight: 600; font-size: 14px; cursor: pointer;
+  display: none; transition: opacity 0.15s;
+}
+.next-btn:hover { opacity: 0.85; }
+.nb-exam { background: var(--purple); color: #fff; }
+.nb-lab  { background: var(--orange); color: #fff; }
+
+/* flashcard */
+.fc-card {
+  background: var(--surface); border: 0.5px solid var(--border2); border-radius: 14px;
+  padding: 1.5rem; margin-top: 0.5rem; cursor: pointer;
+}
+.fc-hint { font-size: 12px; color: var(--muted); margin-top: 0.75rem; }
+.fc-answer { display: none; margin-top: 1rem; padding: 1rem; background: var(--surface2); border-radius: 8px; font-size: 14px; color: #c5c3e0; line-height: 1.6; border-left: 2px solid var(--purple); }
+.fc-answer-lab { border-left-color: var(--orange) !important; }
+.fc-btns { display: flex; gap: 8px; margin-top: 1rem; display: none; }
+.fc-btn { flex: 1; padding: 10px; border-radius: 8px; border: none; font-family: 'Syne', sans-serif; font-weight: 600; font-size: 13px; cursor: pointer; transition: opacity 0.15s; }
+.fc-got { background: var(--green-dim); color: var(--green); border: 0.5px solid rgba(45,224,126,0.2); }
+.fc-miss { background: var(--red-dim); color: var(--red); border: 0.5px solid rgba(240,84,84,0.2); }
+.fc-got:hover, .fc-miss:hover { opacity: 0.75; }
+
+/* results */
+.results-wrap { max-width: 520px; margin: 0 auto; padding: 4rem 2rem; text-align: center; }
+.result-pct {
+  width: 110px; height: 110px; border-radius: 50%; margin: 0 auto 1.5rem;
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 800;
+}
+.rp-great { background: var(--green-dim); color: var(--green); border: 1px solid rgba(45,224,126,0.2); }
+.rp-ok    { background: rgba(240,168,50,0.1); color: var(--amber); border: 1px solid rgba(240,168,50,0.2); }
+.rp-low   { background: var(--red-dim); color: var(--red); border: 1px solid rgba(240,84,84,0.2); }
+.results-wrap h2 { font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 800; margin-bottom: 0.5rem; }
+.results-wrap p  { color: var(--muted); font-size: 14px; margin-bottom: 2rem; }
+.result-stats { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin-bottom: 2rem; }
+.rs { background: var(--surface); border: 0.5px solid var(--border); border-radius: 10px; padding: 1rem; }
+.rs-n { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; }
+.rs-l { font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted2); margin-top: 3px; font-family: 'Syne', sans-serif; }
+.result-btns { display: flex; gap: 10px; justify-content: center; }
+</style>
+</head>
+<body>
+
+<!-- ══════════ LANDING ══════════ -->
+<div id="landing">
+  <div class="wrap">
+    <div class="hero">
+      <div class="pill"><span class="pill-dot"></span>Interactive Study Games</div>
+      <h1>Study smarter,<br>not <span>harder.</span></h1>
+      <p>Two interactive review games covering every learning objective in CHEM 102. Pick a game and start practicing.</p>
+      <div class="stats">
+        <div class="stat-item"><div class="stat-num">2</div><div class="stat-lbl">Games</div></div>
+        <div class="stat-item"><div class="stat-num" id="total-q-count">—</div><div class="stat-lbl">Questions</div></div>
+        <div class="stat-item"><div class="stat-num" id="total-t-count">—</div><div class="stat-lbl">Topics</div></div>
+      </div>
+    </div>
+
+    <div class="section-lbl">Games</div>
+    <div class="cards">
+      <!-- EXAM CARD -->
+      <div class="game-card">
+        <div class="card-glow-exam"></div>
+        <div class="card-top">
+          <div class="card-icon icon-exam">⚗️</div>
+          <span class="card-badge badge-exam">Exam Review</span>
+        </div>
+        <h2>CHEM 102 Quiz</h2>
+        <p>Multiple choice and flashcard questions for every learning objective across all exam units — thermochemistry through electrochemistry.</p>
+        <div class="card-stats">
+          <div class="cs"><div class="cs-num" id="exam-q-count">—</div><div class="cs-lbl">Questions</div></div>
+          <div class="cs"><div class="cs-num" id="exam-t-count">—</div><div class="cs-lbl">Topics</div></div>
+          <div class="cs"><div class="cs-num">~30</div><div class="cs-lbl">Minutes</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">Thermochemistry</span>
+          <span class="tag">Kinetics</span>
+          <span class="tag">Equilibrium</span>
+          <span class="tag">Acids & Bases</span>
+          <span class="tag">Electrochemistry</span>
+        </div>
+        <div class="card-footer">
+          <button class="launch-btn btn-exam" onclick="openGame('exam')">Launch Quiz →</button>
+          <span class="card-range">Units 10 – 18</span>
+        </div>
+      </div>
+
+      <!-- LAB CARD -->
+      <div class="game-card">
+        <div class="card-glow-lab"></div>
+        <div class="card-top">
+          <div class="card-icon icon-lab">🧪</div>
+          <span class="card-badge badge-lab">Lab Review</span>
+        </div>
+        <h2>CHEM 102L Quiz</h2>
+        <p>Practice lab techniques, procedures, and concepts tested in the CHEM 102L lab — from Beer's Law and calorimetry to titrations and kinetics.</p>
+        <div class="card-stats">
+          <div class="cs"><div class="cs-num" id="lab-q-count">—</div><div class="cs-lbl">Questions</div></div>
+          <div class="cs"><div class="cs-num" id="lab-t-count">—</div><div class="cs-lbl">Topics</div></div>
+          <div class="cs"><div class="cs-num">~20</div><div class="cs-lbl">Minutes</div></div>
+        </div>
+        <div class="tags">
+          <span class="tag">Safety & SDS</span>
+          <span class="tag">Beer's Law</span>
+          <span class="tag">Calorimetry</span>
+          <span class="tag">Kinetics</span>
+          <span class="tag">Titrations</span>
+        </div>
+        <div class="card-footer">
+          <button class="launch-btn btn-lab" onclick="openGame('lab')">Launch Quiz →</button>
+          <span class="card-range">Lab Exam Prep</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ EXAM GAME ══════════ -->
+<div id="exam-game" class="game-screen">
+  <nav class="game-nav">
+    <button class="nav-back" onclick="backToLanding()">← Back</button>
+    <span class="nav-title">CHEM 102 Exam Review</span>
+    <span class="nav-score" id="exam-score-nav" style="color:var(--purple-light)">0 / 0</span>
+  </nav>
+  <div id="exam-selector">
+    <div class="selector-wrap">
+      <h2 class="sel-heading">Choose your topics</h2>
+      <p class="sel-sub">Select any combination of topics, then pick a mode and start.</p>
+      <div style="margin-bottom:1.25rem;">
+        <div class="group-label">Mode</div>
+        <div class="mode-row">
+          <button class="mode-btn active-exam" id="em-mc" onclick="setMode('exam','mc')">Multiple choice</button>
+          <button class="mode-btn" id="em-fc" onclick="setMode('exam','fc')">Flashcards</button>
+        </div>
+      </div>
+      <div id="exam-topic-groups"></div>
+      <div class="sel-controls">
+        <button class="ctrl-btn start-btn-exam" id="exam-start-btn" onclick="startQuiz('exam')" disabled>Start</button>
+        <button class="ctrl-btn" onclick="selAll('exam')">Select all</button>
+        <button class="ctrl-btn" onclick="selNone('exam')">Clear</button>
+        <span class="sel-count-text" id="exam-sel-count">0 topics selected</span>
+      </div>
+    </div>
+  </div>
+  <div id="exam-quiz" style="display:none">
+    <div class="quiz-wrap">
+      <div class="prog-bar-bg"><div class="prog-bar-fill pb-exam" id="exam-pb"></div></div>
+      <div class="q-meta-tag qm-exam" id="exam-qmeta"></div>
+      <div class="q-text" id="exam-qtext"></div>
+      <div id="exam-choices-area"></div>
+      <div class="feedback-box" id="exam-feedback"></div>
+      <button class="next-btn nb-exam" id="exam-next" onclick="nextQ('exam')">Next →</button>
+    </div>
+  </div>
+  <div id="exam-results" style="display:none">
+    <div class="results-wrap">
+      <div class="result-pct" id="exam-rpct"></div>
+      <h2 id="exam-rtitle"></h2>
+      <p id="exam-rmsg"></p>
+      <div class="result-stats">
+        <div class="rs"><div class="rs-n" style="color:var(--green)" id="exam-rc"></div><div class="rs-l">Correct</div></div>
+        <div class="rs"><div class="rs-n" style="color:var(--red)" id="exam-rw"></div><div class="rs-l">Incorrect</div></div>
+        <div class="rs"><div class="rs-n" id="exam-rp"></div><div class="rs-l">Score</div></div>
+      </div>
+      <div class="result-btns">
+        <button class="launch-btn btn-exam" onclick="startQuiz('exam')">Try again</button>
+        <button class="ctrl-btn" onclick="showSel('exam')">Change topics</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════ LAB GAME ══════════ -->
+<div id="lab-game" class="game-screen">
+  <nav class="game-nav">
+    <button class="nav-back" onclick="backToLanding()">← Back</button>
+    <span class="nav-title">CHEM 102L Lab Review</span>
+    <span class="nav-score" id="lab-score-nav" style="color:#f0a054">0 / 0</span>
+  </nav>
+  <div id="lab-selector">
+    <div class="selector-wrap">
+      <h2 class="sel-heading">Choose your topics</h2>
+      <p class="sel-sub">Select any combination of lab topics, then pick a mode and start.</p>
+      <div style="margin-bottom:1.25rem;">
+        <div class="group-label">Mode</div>
+        <div class="mode-row">
+          <button class="mode-btn active-lab" id="lm-mc" onclick="setMode('lab','mc')">Multiple choice</button>
+          <button class="mode-btn" id="lm-fc" onclick="setMode('lab','fc')">Flashcards</button>
+        </div>
+      </div>
+      <div id="lab-topic-groups"></div>
+      <div class="sel-controls">
+        <button class="ctrl-btn start-btn-lab" id="lab-start-btn" onclick="startQuiz('lab')" disabled>Start</button>
+        <button class="ctrl-btn" onclick="selAll('lab')">Select all</button>
+        <button class="ctrl-btn" onclick="selNone('lab')">Clear</button>
+        <span class="sel-count-text" id="lab-sel-count">0 topics selected</span>
+      </div>
+    </div>
+  </div>
+  <div id="lab-quiz" style="display:none">
+    <div class="quiz-wrap">
+      <div class="prog-bar-bg"><div class="prog-bar-fill pb-lab" id="lab-pb"></div></div>
+      <div class="q-meta-tag qm-lab" id="lab-qmeta"></div>
+      <div class="q-text" id="lab-qtext"></div>
+      <div id="lab-choices-area"></div>
+      <div class="feedback-box" id="lab-feedback"></div>
+      <button class="next-btn nb-lab" id="lab-next" onclick="nextQ('lab')">Next →</button>
+    </div>
+  </div>
+  <div id="lab-results" style="display:none">
+    <div class="results-wrap">
+      <div class="result-pct" id="lab-rpct"></div>
+      <h2 id="lab-rtitle"></h2>
+      <p id="lab-rmsg"></p>
+      <div class="result-stats">
+        <div class="rs"><div class="rs-n" style="color:var(--green)" id="lab-rc"></div><div class="rs-l">Correct</div></div>
+        <div class="rs"><div class="rs-n" style="color:var(--red)" id="lab-rw"></div><div class="rs-l">Incorrect</div></div>
+        <div class="rs"><div class="rs-n" id="lab-rp"></div><div class="rs-l">Score</div></div>
+      </div>
+      <div class="result-btns">
+        <button class="launch-btn btn-lab" onclick="startQuiz('lab')">Try again</button>
+        <button class="ctrl-btn" onclick="showSel('lab')">Change topics</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ═══════════════════════════ DATA ═══════════════════════════ */
+
+const EXAM_TOPICS = [
+  { id:'10A', group:'Exam 1 — Thermochemistry & Solutions', name:'Potential energy & bonds', q:[
+    {q:'What happens to potential energy when two atoms form a chemical bond?',a:'Decreases — bond formation is exothermic, releasing energy as attractive forces stabilize the system.',choices:['Increases, as energy is required','Decreases, as attractive forces stabilize the system','Stays the same','Increases then decreases'],correct:1},
+    {q:'Bond formation is classified as which type of process?',a:'Exothermic — energy is released to surroundings.',choices:['Endothermic','Isothermal','Exothermic','Isentropic'],correct:2}
+  ]},
+  { id:'10B', group:'Exam 1 — Thermochemistry & Solutions', name:'System & surroundings', q:[
+    {q:'Ice cream melting in your hand — what is the system?',a:'The ice cream is the system.',choices:['Your hand','The air','The ice cream','The sun'],correct:2},
+    {q:'Everything outside the system boundary is called:',a:'The surroundings.',choices:['The environment','The universe','The surroundings','The boundary'],correct:2}
+  ]},
+  { id:'10C', group:'Exam 1 — Thermochemistry & Solutions', name:'Internal energy (ΔE)', q:[
+    {q:'A system releases 250 J of heat; 150 J of work is done ON it. ΔE = ?',a:'ΔE = q + w = −250 + 150 = −100 J',choices:['+100 J','−400 J','−100 J','+400 J'],correct:2},
+    {q:'Work done ON the system has what sign?',a:'Positive (+), because energy enters the system.',choices:['Negative','Zero','Positive','Undefined'],correct:2}
+  ]},
+  { id:'10D', group:'Exam 1 — Thermochemistry & Solutions', name:'Endothermic vs exothermic', q:[
+    {q:'A flask feels cold during a reaction. The sign of ΔH is:',a:'Positive (+) — the reaction absorbed heat from surroundings (endothermic).',choices:['Negative (−)','Positive (+)','Zero','Cannot determine'],correct:1},
+    {q:'In an endothermic reaction, heat flows from:',a:'Surroundings → system.',choices:['System → surroundings','Surroundings → system','Both directions equally','Neither; no heat flows'],correct:1}
+  ]},
+  { id:'10E', group:'Exam 1 — Thermochemistry & Solutions', name:'State vs path functions', q:[
+    {q:'Which is a state function?',a:'Displacement — depends only on start and end points.',choices:['Distance traveled','Heat (q)','Work (w)','Displacement'],correct:3},
+    {q:'Enthalpy is a state function, meaning ΔH:',a:'Depends only on initial and final states, not the path taken.',choices:['Depends on reaction rate','Depends on the mechanism','Depends only on initial and final states','Is always zero'],correct:2}
+  ]},
+  { id:'10F', group:'Exam 1 — Thermochemistry & Solutions', name:'Reaction enthalpy stoichiometry', q:[
+    {q:'ΔH = −5.00 MJ/mol for octane (MW=114). Energy from 2.28 kg?',a:'20 mol × 5.00 MJ/mol = 100 MJ',choices:['10 MJ','50 MJ','100 MJ','200 MJ'],correct:2}
+  ]},
+  { id:'10G', group:'Exam 1 — Thermochemistry & Solutions', name:'Enthalpy definition', q:[
+    {q:'Enthalpy H is defined as:',a:'H = E + PV',choices:['H = E − PV','H = E / PV','H = E + PV','H = PV − E'],correct:2},
+    {q:'At constant pressure, ΔH equals:',a:'q_p — heat exchanged at constant pressure.',choices:['Work done','ΔE','q_p','PΔV'],correct:2}
+  ]},
+  { id:'10H', group:'Exam 1 — Thermochemistry & Solutions', name:'Phase & temperature changes', q:[
+    {q:'During vaporization at the boiling point, temperature:',a:'Stays constant — energy goes into the phase change.',choices:['Increases steadily','Decreases','Stays constant','Fluctuates'],correct:2},
+    {q:'Heating 10 g water from 25→100°C (Cs=4.18 J/g·K). Heat required?',a:'q = 10 × 4.18 × 75 = 3135 J ≈ 3.14 kJ',choices:['1.05 kJ','3.14 kJ','22.6 kJ','25.7 kJ'],correct:1}
+  ]},
+  { id:'10I', group:'Exam 1 — Thermochemistry & Solutions', name:'Calorimetry', q:[
+    {q:'In a calorimetry experiment, q_rxn = −q_solution because:',a:'Energy is conserved — heat lost by reaction = heat gained by solution.',choices:['The reaction is always exothermic','Energy is conserved','The calorimeter absorbs all heat','Temperature must stay constant'],correct:1},
+    {q:'KBr dissolves and the temperature drops. The sign of ΔH_dissolution is:',a:'Positive (+) — the process is endothermic.',choices:['Negative (−)','Positive (+)','Zero','Depends on amount'],correct:1}
+  ]},
+  { id:'10J', group:'Exam 1 — Thermochemistry & Solutions', name:'Heat transfer', q:[
+    {q:'The fundamental heat-transfer equation for mixing two water samples is:',a:'q_hot + q_cold = 0 (conservation of energy).',choices:['q_hot = q_cold','q_hot + q_cold = 0','q = mcT alone','ΔH = ΔE + PΔV'],correct:1}
+  ]},
+  { id:'10K', group:'Exam 1 — Thermochemistry & Solutions', name:"Hess's law", q:[
+    {q:"Hess's Law states that ΔH for an overall reaction:",a:'Equals the sum of ΔH values for individual steps — it is path-independent.',choices:['Depends on the pathway','Equals the sum of ΔH for each step','Cannot be calculated indirectly','Is always negative'],correct:1},
+    {q:'A+B→C (ΔH=−100) and D→C (ΔH=+50). ΔH for A+B→D?',a:'Reverse D→C to get C→D (ΔH=−50). Sum: −100+(−50) = −150 kJ',choices:['−50 kJ','+150 kJ','−150 kJ','+50 kJ'],correct:2}
+  ]},
+  { id:'10L', group:'Exam 1 — Thermochemistry & Solutions', name:'Formation equations', q:[
+    {q:'A formation equation produces how many moles of the target compound?',a:'Exactly 1 mole.',choices:['2 moles','Any amount','1 mole','Depends on the compound'],correct:2},
+    {q:'Carbon in formation equations is written as:',a:'C(s, graphite) — the standard state of carbon.',choices:['C(g)','CO₂(g)','C(s, diamond)','C(s, graphite)'],correct:3}
+  ]},
+  { id:'10M', group:'Exam 1 — Thermochemistry & Solutions', name:'Bond enthalpies', q:[
+    {q:'Bonds broken = 655 kJ; bonds formed = 760 kJ. ΔH = ?',a:'ΔH = 655 − 760 = −105 kJ/mol',choices:['+105 kJ/mol','−105 kJ/mol','+1415 kJ/mol','−655 kJ/mol'],correct:1}
+  ]},
+  { id:'12A-G', group:'Exam 1 — Thermochemistry & Solutions', name:'Colligative properties', q:[
+    {q:'Water in osmosis moves toward the solution with:',a:'Higher solute concentration, to equalize chemical potential.',choices:['Lower solute concentration','Higher solute concentration','Warmer temperature','Higher pressure'],correct:1},
+    {q:'Osmotic pressure for 0.5 M NaCl (i=2) at 25°C?',a:'Π = iMRT = 2×0.5×0.0821×298 ≈ 24.5 atm',choices:['12.3 atm','6.1 atm','24.5 atm','49.0 atm'],correct:2},
+    {q:'Rank vapor pressure: 1M sucrose, 1M NaCl, 1M BaCl₂ (highest first)',a:'Sucrose > NaCl > BaCl₂ — more particles = more VP lowering.',choices:['BaCl₂ > NaCl > Sucrose','Sucrose > NaCl > BaCl₂','NaCl > Sucrose > BaCl₂','All equal'],correct:1},
+    {q:'As temperature increases, gas solubility in water:',a:'Decreases — gas dissolution is exothermic, so higher T disfavors it.',choices:['Increases','Decreases','Stays the same','First increases then decreases'],correct:1},
+    {q:"Henry's Law: C = kP. k=3.0×10⁻² M/atm, P=4.0 atm. C = ?",a:'C = kP = 0.03 × 4.0 = 0.12 M',choices:['0.03 M','0.12 M','0.48 M','7.5 M'],correct:1}
+  ]},
+  { id:'11A-D', group:'Exam 2 — Kinetics & Thermodynamics', name:'Thermodynamic laws', q:[
+    {q:'The 2nd Law of Thermodynamics states:',a:'ΔS_univ > 0 for any spontaneous process.',choices:['Energy is conserved','ΔS_univ > 0 for spontaneous processes','Entropy is zero at 0 K','Heat flows from cold to hot'],correct:1},
+    {q:'For H₂O(l) → H₂O(s), signs of ΔH and ΔS are:',a:'ΔH(−), ΔS(−) — releases heat, becomes more ordered.',choices:['ΔH(+), ΔS(+)','ΔH(−), ΔS(−)','ΔH(+), ΔS(−)','ΔH(−), ΔS(+)'],correct:1},
+    {q:'Entropy rank: He(g), Ne(g), Ar(g)',a:'He < Ne < Ar — entropy increases with atomic mass.',choices:['Ar < Ne < He','He < Ne < Ar','Ne < He < Ar','All equal'],correct:1}
+  ]},
+  { id:'11E-H', group:'Exam 2 — Kinetics & Thermodynamics', name:'Gibbs energy & favorability', q:[
+    {q:'ΔG° for ΔH°=−196 kJ and ΔS°=+126 J/K at 298 K?',a:'ΔG = −196 − 298(0.126) = −233.5 kJ/mol',choices:['−158.5 kJ/mol','−233.5 kJ/mol','+233.5 kJ/mol','−196 kJ/mol'],correct:1},
+    {q:'ΔH=+26.4 kJ, ΔS=+109 J/K. Favorable above what T?',a:'T > ΔH/ΔS = 26400/109 ≈ 242 K',choices:['Above 100 K','Above 242 K','Above 500 K','Always favorable'],correct:1},
+    {q:'An exergonic reaction has:',a:'ΔG < 0 — spontaneous.',choices:['ΔG > 0','ΔG = 0','ΔG < 0','ΔH < 0 only'],correct:2}
+  ]},
+  { id:'13A-D', group:'Exam 2 — Kinetics & Thermodynamics', name:'Reaction rates & rate laws', q:[
+    {q:'Doubling [A] quadruples rate; doubling [B] doubles rate. Rate law?',a:'Rate = k[A]²[B]',choices:['Rate = k[A][B]','Rate = k[A]²[B]','Rate = k[A][B]²','Rate = k[A]²[B]²'],correct:1},
+    {q:'For 2A→B, A disappears at 0.10 M/s. Rate of B appearance?',a:'0.05 M/s — half the rate of A disappearance.',choices:['0.10 M/s','0.20 M/s','0.05 M/s','0.025 M/s'],correct:2},
+    {q:'The instantaneous rate from a [C] vs time graph is found by:',a:'Drawing the tangent line at that point and finding its slope.',choices:['Average of all data slopes','Tangent slope at that point','y-intercept of the curve','Total change / total time'],correct:1}
+  ]},
+  { id:'13E-G', group:'Exam 2 — Kinetics & Thermodynamics', name:'Integrated rate laws & half-life', q:[
+    {q:'A plot of 1/[A] vs time is linear. Reaction order?',a:'Second order.',choices:['Zero order','First order','Second order','Third order'],correct:2},
+    {q:'k = 0.32 day⁻¹. t₁/₂ = ?',a:'t₁/₂ = 0.693 / 0.32 ≈ 2.17 days',choices:['0.32 days','2.17 days','3.13 days','1.0 day'],correct:1},
+    {q:'1st order: k=0.1 s⁻¹, [A]₀=1.0 M. [A] after 5 s?',a:'[A] = e^(−0.5) ≈ 0.61 M',choices:['0.50 M','0.61 M','0.90 M','0.37 M'],correct:1}
+  ]},
+  { id:'13H-M', group:'Exam 2 — Kinetics & Thermodynamics', name:'Arrhenius, mechanisms & catalysts', q:[
+    {q:'A 10°C rise doubles rate because:',a:'It increases the fraction of molecules exceeding Ea.',choices:['It doubles concentration','It changes Ea','It increases fraction of molecules exceeding Ea','It eliminates the need for collisions'],correct:2},
+    {q:'The peak of a reaction energy diagram represents:',a:'The transition state (activated complex).',choices:['Products','Reactants','Transition state','Activation energy'],correct:2},
+    {q:'A catalyst lowers Ea by:',a:'Providing an alternative reaction pathway.',choices:['Increasing temperature','Providing an alternative pathway','Removing products','Increasing concentration'],correct:1},
+    {q:'Requirement for a valid reaction mechanism:',a:'Steps sum to overall reaction AND rate-determining step matches experimental rate law.',choices:['Only one step allowed','Steps sum to overall rxn AND match rate law','Must involve a catalyst','Forward and reverse rates must be equal'],correct:1}
+  ]},
+  { id:'14A-E', group:'Exam 2 — Kinetics & Thermodynamics', name:'Equilibrium expressions & Q', q:[
+    {q:'At dynamic equilibrium:',a:'Forward and reverse rates are equal; concentrations remain constant but reactions continue.',choices:['All reactions stop','Only forward continues','Forward = reverse rates; concentrations constant','Concentrations are all equal'],correct:2},
+    {q:'Kc for CaCO₃(s) ⇌ CaO(s) + CO₂(g)?',a:'Kc = [CO₂] — pure solids excluded.',choices:['Kc = [CaO][CO₂]/[CaCO₃]','Kc = [CO₂]','Kc = [CaCO₃]/[CaO]','Kc = 1/[CO₂]'],correct:1},
+    {q:'Kc = 4.3×10⁶, Q = 4.0×10³. Reaction shifts:',a:'Right (toward products) because Q < K.',choices:['Left','Right','No shift','Cannot determine'],correct:1},
+    {q:'Forward K = 0.212. Reverse K = ?',a:'1 / 0.212 ≈ 4.72',choices:['0.212','2.12','4.72','0.472'],correct:2}
+  ]},
+  { id:'14F-J', group:'Exam 2 — Kinetics & Thermodynamics', name:"Le Chatelier & Gibbs vs K", q:[
+    {q:'N₂ + 3H₂ ⇌ 2NH₃ (exothermic). Increasing temperature shifts:',a:'Left — heat treated as product, adding heat shifts toward reactants.',choices:['Right','Left','No shift','Increases K'],correct:1},
+    {q:'K = 1.5×10⁻⁵. ΔG° at 298 K?',a:'ΔG° = −RT ln K ≈ +27.5 kJ/mol',choices:['−27.5 kJ/mol','+27.5 kJ/mol','0 kJ/mol','+54 kJ/mol'],correct:1}
+  ]},
+  { id:'15A-B', group:'Exam 2 — Kinetics & Thermodynamics', name:'Acid strength', q:[
+    {q:'H₂S or H₂Te: which is the stronger acid?',a:'H₂Te — bond strength decreases down the group, making H⁺ easier to release.',choices:['H₂S','H₂Te','They are equal','Depends on concentration'],correct:1},
+    {q:'Higher Ka means:',a:'Stronger acid — greater degree of ionization.',choices:['Weaker acid','Stronger acid','More basic','Less soluble'],correct:1}
+  ]},
+  { id:'15C-F', group:'Exam 3 — Acids, Bases & Buffers', name:'pH & conjugate pairs', q:[
+    {q:'Conjugate base of NH₄⁺?',a:'NH₃ — loses one H⁺.',choices:['NH₂⁻','NH₃','N²⁻','NH₅⁺'],correct:1},
+    {q:'pH = 2.35. [OH⁻] = ?',a:'[H⁺]=4.47×10⁻³; [OH⁻]=Kw/[H⁺]≈2.2×10⁻¹² M',choices:['4.47×10⁻³ M','2.2×10⁻¹² M','1.0×10⁻⁷ M','11.65 M'],correct:1},
+    {q:'pH of 0.10 M Sr(OH)₂?',a:'[OH⁻]=0.20 M; pOH=0.70; pH=13.30',choices:['12.70','13.30','13.00','7.00'],correct:1}
+  ]},
+  { id:'15G-L', group:'Exam 3 — Acids, Bases & Buffers', name:'Weak acids/bases & salts', q:[
+    {q:'As weak acid concentration decreases, % ionization:',a:'Increases — dilution shifts equilibrium toward ionization.',choices:['Decreases','Increases','Stays the same','Reaches 100%'],correct:1},
+    {q:'Why is Ka₁ >> Ka₂ for polyprotic acids?',a:'Harder to remove a proton from a negatively charged ion.',choices:['Second proton is larger','Harder to remove H⁺ from a negatively charged ion','Ka₂ involves a stronger bond','Water blocks ionization'],correct:1},
+    {q:'Is NaF solution acidic or basic?',a:'Basic — F⁻ hydrolyzes to give OH⁻.',choices:['Acidic','Basic','Neutral','Depends on temperature'],correct:1}
+  ]},
+  { id:'16A-E', group:'Exam 3 — Acids, Bases & Buffers', name:'Buffers', q:[
+    {q:'Henderson-Hasselbalch: pH for 0.25M NH₃ / 0.40M NH₄⁺ (pKa=9.25)?',a:'pH = 9.25 + log(0.25/0.40) = 9.05',choices:['9.45','9.05','9.25','8.85'],correct:1},
+    {q:'Buffer capacity is highest when:',a:'[Acid] = [Base] and total concentrations are high.',choices:['pH = 7.00','[Acid]=[Base] and concentrations are high','Only acid is present','T = 0°C'],correct:1},
+    {q:'Adding HCl to NH₃/NH₄⁺ buffer — what reaction occurs?',a:'NH₃ + H⁺ → NH₄⁺',choices:['NH₄⁺ + OH⁻ → NH₃ + H₂O','NH₃ + H⁺ → NH₄⁺','Cl⁻ + H₂O → HCl + OH⁻','No reaction'],correct:1}
+  ]},
+  { id:'16F-J', group:'Exam 3 — Acids, Bases & Buffers', name:'Titrations & solubility', q:[
+    {q:'At the half-equivalence point of a weak acid titration:',a:'pH = pKa',choices:['pH = 7.00','pH = pKa','[HA] = 2[A⁻]','The solution is neutral'],correct:1},
+    {q:'Ksp(AgCl) = 1.8×10⁻¹⁰. Molar solubility s?',a:'s = √(1.8×10⁻¹⁰) ≈ 1.3×10⁻⁵ M',choices:['1.8×10⁻¹⁰ M','1.3×10⁻⁵ M','3.4×10⁻⁵ M','9.0×10⁻¹¹ M'],correct:1},
+    {q:'Decreasing pH increases Mg(OH)₂ solubility because:',a:'H⁺ consumes OH⁻, shifting equilibrium toward dissolution.',choices:['Lower pH increases Ksp','H⁺ consumes OH⁻, shifting dissolution right','Mg²⁺ precipitates','pH has no effect'],correct:1}
+  ]},
+  { id:'17A-F', group:'Final — Electrochemistry', name:'Redox & galvanic cells', q:[
+    {q:'Oxidation number of Cr in Cr₂O₇²⁻?',a:'+6 (from 2x + 7(−2) = −2)',choices:['+3','+6','+7','+12'],correct:1},
+    {q:'In Zn | Zn²⁺ || Cu²⁺ | Cu, the cathode is:',a:'Cu — reduction occurs at the cathode.',choices:['Zn','Cu','The salt bridge','Both equally'],correct:1},
+    {q:'More positive E°_red means stronger:',a:'Oxidizing agent — more easily reduced.',choices:['Reducing agent','Oxidizing agent','Acid','Base'],correct:1},
+    {q:'E°_cell: Al³⁺/Al=−1.66V, Ni²⁺/Ni=−0.25V?',a:'E°_cell = −0.25 − (−1.66) = +1.41 V',choices:['−1.41 V','−1.91 V','+1.41 V','+1.91 V'],correct:2}
+  ]},
+  { id:'17G-K', group:'Final — Electrochemistry', name:'Nernst, electrolysis & electroplating', q:[
+    {q:'ΔG° for E°_cell=+1.10V, n=2?',a:'ΔG° = −nFE° = −2×96485×1.10 ≈ −212 kJ/mol',choices:['+212 kJ/mol','−212 kJ/mol','−106 kJ/mol','+106 kJ/mol'],correct:1},
+    {q:'As a galvanic cell runs, E (cell potential):',a:'Decreases — Q increases until E = 0 at equilibrium.',choices:['Increases','Decreases until E = 0','Stays constant','Oscillates'],correct:1},
+    {q:'Mass of Ag plated by 2.5 A for 15 min?',a:'Q=2250 C; mol e⁻=0.0233; mass=2.52 g',choices:['0.252 g','2.52 g','25.2 g','0.023 g'],correct:1}
+  ]},
+  { id:'18AB', group:'Final — Electrochemistry', name:'Solid types', q:[
+    {q:'Diamond is classified as:',a:'Network covalent solid — covalent bonds throughout 3D lattice.',choices:['Ionic','Molecular','Metallic','Network covalent'],correct:3},
+    {q:'NaCl is classified as:',a:'Ionic solid — held by electrostatic attraction.',choices:['Network covalent','Molecular','Ionic','Metallic'],correct:2}
+  ]}
+];
+
+const LAB_TOPICS = [
+  { id:'LAB-1', group:'Lab Fundamentals & Safety', name:'SDS, PPE & safety features', q:[
+    {q:'What does SDS stand for, and what is its primary purpose?',a:'Safety Data Sheet — provides chemical hazard, handling, and emergency information.',choices:['Standard Data Sheet — records lab results','Safety Data Sheet — provides hazard and handling information','Substance Descriptor Summary — lists chemical properties','System Data Sheet — tracks equipment'],correct:1},
+    {q:'Which PPE is always required in a chemistry lab?',a:'Safety goggles, lab coat, and closed-toe shoes at minimum.',choices:['Gloves only','Safety goggles only','Goggles, lab coat, and closed-toe shoes','Gloves and a face shield only'],correct:2},
+    {q:'An eyewash station is used when:',a:'A chemical splashes into the eyes — flush immediately for 15 minutes.',choices:['A spill occurs on the bench','Chemicals contact the eyes — flush 15 minutes','Equipment breaks','A fire starts'],correct:1}
+  ]},
+  { id:'LAB-2', group:'Lab Fundamentals & Safety', name:'Significant figures & measurements', q:[
+    {q:'How many significant figures are in 0.00450?',a:'3 — leading zeros are not significant; trailing zeros after decimal are.',choices:['2','3','5','6'],correct:1},
+    {q:'5.43 × 10² expressed in standard notation is:',a:'543',choices:['54.3','543','5430','0.0543'],correct:1},
+    {q:'When multiplying measurements, the result should have:',a:'The same number of significant figures as the measurement with fewest sig figs.',choices:['The most sig figs of any measurement','The fewest sig figs of any measurement','Exactly 3 sig figs','As many decimals as possible'],correct:1}
+  ]},
+  { id:'LAB-3', group:'Lab Fundamentals & Safety', name:'Net ionic equations', q:[
+    {q:'In a net ionic equation, which species are omitted?',a:'Spectator ions — ions that appear unchanged on both sides.',choices:['All cations','All anions','Spectator ions that are unchanged on both sides','Solid precipitates'],correct:2},
+    {q:'Solid ionic compounds appear in net ionic equations only when:',a:'They are dissolving or precipitating (not as spectator ions in solution).',choices:['They are in excess','They are dissolving or precipitating','They have a charge > 2','They are transition metals'],correct:1}
+  ]},
+  { id:'THR-1', group:'Thermochemistry Lab (THR)', name:'Endothermic vs exothermic processes', q:[
+    {q:'In a calorimetry experiment, the temperature of the solution increases. The reaction is:',a:'Exothermic — heat released by reaction raises solution temperature.',choices:['Endothermic','Exothermic','Isothermal','At equilibrium'],correct:1},
+    {q:'On a temperature vs. time graph, an endothermic dissolution shows:',a:'A temperature drop in the solution during dissolution.',choices:['A temperature increase','A temperature drop','No temperature change','A curved plateau'],correct:1}
+  ]},
+  { id:'THR-2', group:'Thermochemistry Lab (THR)', name:'Calorimetry calculations', q:[
+    {q:'The formula for heat absorbed by a solution is:',a:'q_sol = m × C × ΔT',choices:['q = nΔHf','q_sol = m × C × ΔT','q = PΔV','q = ΔH / n'],correct:1},
+    {q:'If q_solution = −850 J, what is q_reaction (assuming no heat loss to calorimeter)?',a:'+850 J — q_rxn = −q_solution',choices:['−850 J','+850 J','0 J','−1700 J'],correct:1},
+    {q:'Enthalpy of reaction per mole is calculated as:',a:'ΔH = q_rxn / n_analyte',choices:['ΔH = q_sol × n','ΔH = q_rxn / n_analyte','ΔH = ΣΔHf products','ΔH = q_sol / m'],correct:1}
+  ]},
+  { id:'THR-3', group:'Thermochemistry Lab (THR)', name:"Hess's law & formation enthalpies", q:[
+    {q:"Hess's Law works because enthalpy is a:",a:"State function — ΔH depends only on initial and final states.",choices:['Path function','State function','Rate function','Kinetic function'],correct:1},
+    {q:'ΔH°_rxn from formation enthalpies:',a:'ΔH°_rxn = ΣnΔH°f(products) − ΣnΔH°f(reactants)',choices:['ΣnΔH°f(reactants) − ΣnΔH°f(products)','ΣnΔH°f(products) − ΣnΔH°f(reactants)','ΣnΔH°f(products) only','Product of all ΔH°f values'],correct:1}
+  ]},
+  { id:'ERR-1', group:'Error Analysis', name:'Precision vs accuracy', q:[
+    {q:'A set of measurements clusters tightly but is far from the true value. This describes:',a:'High precision, low accuracy.',choices:['High accuracy, low precision','High precision, low accuracy','Low precision, low accuracy','High precision, high accuracy'],correct:1},
+    {q:'Which type of error is equally likely to be too high or too low?',a:'Random error — affects precision.',choices:['Systematic error','Random error','Calibration error','Human error'],correct:1}
+  ]},
+  { id:'ERR-2', group:'Error Analysis', name:'Systematic vs random error', q:[
+    {q:'A scale consistently reads 0.5 g too heavy. This is:',a:'Systematic error — skewed in one direction, affects accuracy.',choices:['Random error','Systematic error','Both types equally','Negligible error'],correct:1},
+    {q:'Relative error is calculated as:',a:'|Measured − True| / True × 100%',choices:['(Measured − True) / Measured × 100%','|Measured − True| / True × 100%','|Measured − True| × 100','True / Measured × 100%'],correct:1}
+  ]},
+  { id:'COL-1', group:'Colligative Properties Lab (COL)', name:"van't Hoff factor & molality", q:[
+    {q:"The van't Hoff factor (i) for NaCl in water is approximately:",a:'2 — NaCl dissociates into Na⁺ and Cl⁻.',choices:['1','2','3','0.5'],correct:1},
+    {q:'Molality is defined as:',a:'Moles of solute per kilogram of solvent.',choices:['mol/L solution','mol/kg solvent','g/L solution','mol/mol solution'],correct:1},
+    {q:'Colligative properties depend on:',a:"The number of solute particles (i × m), not their identity.",choices:['Solute identity only','Solute size','Number of solute particles (i × m)','Temperature only'],correct:2}
+  ]},
+  { id:'COL-2', group:'Colligative Properties Lab (COL)', name:'Freezing point depression & thermal curves', q:[
+    {q:'The freezing point depression equation is:',a:'ΔTf = −iKfm',choices:['ΔTf = iKbm','ΔTf = −iKfm','ΔTf = Kf / m','ΔTf = iKf / m'],correct:1},
+    {q:'On a cooling curve, the flat region represents:',a:'A phase change — temperature stays constant as solid forms.',choices:['Rapid cooling','A phase change at constant temperature','The solution boiling','Error in measurement'],correct:1},
+    {q:'To find molar mass from ΔTf data, you need:',a:'ΔTf, Kf, mass of solvent, and mass of solute.',choices:['ΔTf and Ka only','ΔTf, Kf, mass of solvent, mass of solute','Density and volume only','pH and concentration'],correct:1}
+  ]},
+  { id:'SPEC-1', group:"Spectrophotometry & Beer's Law", name:"Beer's law principles", q:[
+    {q:"Beer's Law (A = εlC) states that absorbance is:",a:'Directly proportional to analyte concentration.',choices:['Inversely proportional to concentration','Directly proportional to concentration','Independent of concentration','Proportional to wavelength'],correct:1},
+    {q:'λ_max is defined as:',a:'The wavelength most strongly absorbed by the analyte.',choices:['The wavelength of maximum emission','The wavelength most strongly absorbed by the analyte','The longest wavelength in the spectrum','The wavelength at which absorbance = 0'],correct:1},
+    {q:'An absorption spectrum plots:',a:'Absorbance (A) vs. wavelength (λ).',choices:['A vs. concentration (C)','A vs. wavelength (λ)','Concentration vs. time','Transmittance vs. molarity'],correct:1}
+  ]},
+  { id:'SPEC-2', group:"Spectrophotometry & Beer's Law", name:'Dilutions & standard curves', q:[
+    {q:'Dilution equation M₁V₁ = M₂V₂ is used to:',a:'Find the concentration or volume needed to prepare a diluted standard.',choices:['Calculate absorbance','Find concentration or volume for dilutions','Determine molar mass','Calculate freezing point depression'],correct:1},
+    {q:'A calibration (standard) curve plots:',a:'Absorbance (A) vs. concentration (C) — used to find unknown concentrations.',choices:['A vs. wavelength','A vs. concentration — to find unknowns','Concentration vs. time','pH vs. volume added'],correct:1},
+    {q:'From a linear standard curve (A = mC + b), an unknown concentration is found by:',a:'Measuring absorbance and solving C = (A − b) / m.',choices:['Reading directly from x-axis','Solving C = (A − b) / m','Using A = εlC with ε from tables','Extrapolating beyond the curve'],correct:1}
+  ]},
+  { id:'RK-1', group:'Chemical Kinetics Lab (RK1-2)', name:'Reaction order & integrated rate laws', q:[
+    {q:'Which plot being linear indicates a first-order reaction?',a:'ln[A] vs. time.',choices:['[A] vs. time','ln[A] vs. time','1/[A] vs. time','[A]² vs. time'],correct:1},
+    {q:'A pseudo-rate constant k\' is used when:',a:'One reactant is in large excess so its concentration is essentially constant.',choices:['The reaction is very slow','One reactant is in large excess','Temperature is constant','A catalyst is used'],correct:1},
+    {q:'Crystal Violet experiments use spectrophotometry to track:',a:'Concentration changes over time via absorbance.',choices:['Temperature changes','pH changes','Concentration via absorbance','Pressure changes'],correct:2}
+  ]},
+  { id:'RK-2', group:'Chemical Kinetics Lab (RK1-2)', name:'Rate laws & initial rates method', q:[
+    {q:'To find reaction order from initial rates data:',a:'Compare how rate changes as concentration changes, using n = ln(rate₂/rate₁) / ln([A]₂/[A]₁).',choices:['Plot [A] vs. time','Use n = ln(r₂/r₁)/ln([A]₂/[A]₁)','Measure temperature at t=0','Calculate Ea from Arrhenius'],correct:1},
+    {q:'The overall reaction order is:',a:'The sum of individual orders (x + y + ...) in rate = k[A]ˣ[B]ʸ.',choices:['The largest individual order','The product x × y','The sum x + y + ...','Always 2'],correct:2}
+  ]},
+  { id:'EQB-1', group:'Chemical Equilibrium Lab (EQB)', name:"Le Chatelier's & ICE tables", q:[
+    {q:"Le Chatelier's Principle states that a system at equilibrium will:",a:'Shift to counteract any imposed change.',choices:['Always shift right when disturbed','Shift to counteract any imposed change','Stop reacting','Reach a new equilibrium with the same K'],correct:1},
+    {q:'In an ICE table, the C row represents:',a:'The change in concentration based on stoichiometric ratios.',choices:['Current concentration','The equilibrium constant','Change in concentration (stoichiometric ratios)','Correction factor'],correct:2},
+    {q:'Dynamic equilibrium means:',a:'Forward and reverse reactions continue at equal rates; concentrations are constant.',choices:['Reactions have stopped','Only forward reaction occurs','Forward = reverse rates; concentrations constant','K = 1'],correct:2}
+  ]},
+  { id:'EQB-2', group:'Chemical Equilibrium Lab (EQB)', name:'Iron thiocyanate & equilibrium monitoring', q:[
+    {q:'In the iron thiocyanate equilibrium lab, what indicates the extent of reaction?',a:'The intensity of the red-orange color from the FeSCN²⁺ complex.',choices:['Temperature change','pH change','Intensity of red-orange FeSCN²⁺ color','Gas bubble formation'],correct:3},
+    {q:'Adding more Fe³⁺ to the FeSCN²⁺ equilibrium shifts the reaction:',a:'Right — more FeSCN²⁺ forms, deepening the red color.',choices:['Left (less product)','Right (more FeSCN²⁺)','No shift','Increases K'],correct:1}
+  ]},
+  { id:'ST-1', group:'Seawater Titrations (ST1-3)', name:'Titration curves & equivalence points', q:[
+    {q:'The equivalence point on a pH titration curve is found where:',a:'The steepest pH change occurs (inflection point).',choices:['pH = 7.00','pH = pKa','Steepest pH change (inflection point)','Volume of titrant is minimized'],correct:2},
+    {q:'The half-equivalence point is significant because:',a:'pH = pKa at that point, allowing direct determination of Ka.',choices:['pH = 7','Half the titrant has been added and pH = pKa','Buffer capacity is zero','The solution becomes neutral'],correct:1}
+  ]},
+  { id:'ST-2', group:'Seawater Titrations (ST1-3)', name:'Primary & secondary standards', q:[
+    {q:'A primary standard must be:',a:'High purity, stable, and have a known molar mass for accurate standardization.',choices:['Any soluble salt','High purity, stable, known MW','Acidic only','A strong acid or base'],correct:1},
+    {q:'A secondary standard is:',a:'A solution whose concentration is determined by titration against a primary standard.',choices:['A solid of known mass','Determined by titration against a primary standard','Always NaOH','More accurate than a primary standard'],correct:1}
+  ]},
+  { id:'ST-3', group:'Seawater Titrations (ST1-3)', name:'Polyprotic acid curves & derivative plots', q:[
+    {q:'A diprotic acid titration curve has:',a:'Two equivalence points — one for each ionizable proton.',choices:['One equivalence point','Two equivalence points','Three inflection points','No clear equivalence point'],correct:1},
+    {q:'A first derivative (ΔpH/ΔmL) plot is used to:',a:'Precisely locate the equivalence point as the maximum peak.',choices:['Calculate Ka','Precisely locate the equivalence point','Determine initial concentration','Find the pKb'],correct:1}
+  ]}
+];
+
+/* ═══════════════ STATE ═══════════════ */
+const state = {
+  exam: { sel: new Set(), mode: 'mc', qs: [], idx: 0, score: 0, answered: false, fcFlipped: false },
+  lab:  { sel: new Set(), mode: 'mc', qs: [], idx: 0, score: 0, answered: false, fcFlipped: false }
+};
+
+/* ═══════════════ INIT ═══════════════ */
+function init() {
+  buildTopicUI('exam', EXAM_TOPICS, 'exam-topic-groups', 'exam');
+  buildTopicUI('lab',  LAB_TOPICS,  'lab-topic-groups',  'lab');
+  const eq = EXAM_TOPICS.reduce((s,t)=>s+t.q.length,0);
+  const lq = LAB_TOPICS.reduce((s,t)=>s+t.q.length,0);
+  document.getElementById('total-q-count').textContent = eq + lq + '+';
+  document.getElementById('total-t-count').textContent = EXAM_TOPICS.length + LAB_TOPICS.length;
+  document.getElementById('exam-q-count').textContent = eq + '+';
+  document.getElementById('exam-t-count').textContent = EXAM_TOPICS.length;
+  document.getElementById('lab-q-count').textContent = lq + '+';
+  document.getElementById('lab-t-count').textContent = LAB_TOPICS.length;
+}
+
+function buildTopicUI(gtype, topics, containerId, prefix) {
+  const container = document.getElementById(containerId);
+  const groups = {};
+  topics.forEach(t => {
+    if (!groups[t.group]) groups[t.group] = [];
+    groups[t.group].push(t);
+  });
+  Object.keys(groups).forEach(grp => {
+    const div = document.createElement('div');
+    div.className = 'exam-group';
+    div.innerHTML = `<div class="group-label">${grp}</div><div class="topic-grid" id="${prefix}-grid-${grp.replace(/\s+/g,'-')}"></div>`;
+    container.appendChild(div);
+    const grid = div.querySelector('.topic-grid');
+    groups[grp].forEach(t => {
+      const card = document.createElement('div');
+      card.className = 'topic-card';
+      card.id = `${prefix}-card-${t.id}`;
+      card.innerHTML = `<div class="tc-code tc-code-${prefix}">${t.id}</div><div class="tc-name">${t.name}</div><div class="tc-count">${t.q.length} question${t.q.length!==1?'s':''}</div>`;
+      card.onclick = () => toggleTopic(prefix, t.id);
+      grid.appendChild(card);
+    });
+  });
+}
+
+/* ═══════════════ NAVIGATION ═══════════════ */
+function openGame(type) {
+  document.getElementById('landing').style.display = 'none';
+  document.getElementById(`${type}-game`).style.display = 'block';
+}
+function backToLanding() {
+  ['exam','lab'].forEach(t => { document.getElementById(`${t}-game`).style.display='none'; });
+  document.getElementById('landing').style.display = 'block';
+}
+function showSel(type) {
+  document.getElementById(`${type}-quiz`).style.display = 'none';
+  document.getElementById(`${type}-results`).style.display = 'none';
+  document.getElementById(`${type}-selector`).style.display = 'block';
+}
+
+/* ═══════════════ TOPIC SELECTION ═══════════════ */
+function toggleTopic(type, id) {
+  const s = state[type];
+  const card = document.getElementById(`${type}-card-${id}`);
+  if (s.sel.has(id)) { s.sel.delete(id); card.classList.remove(`sel-${type}`); }
+  else { s.sel.add(id); card.classList.add(`sel-${type}`); }
+  updateSelUI(type);
+}
+function selAll(type) {
+  const topics = type==='exam'?EXAM_TOPICS:LAB_TOPICS;
+  topics.forEach(t => { state[type].sel.add(t.id); document.getElementById(`${type}-card-${t.id}`).classList.add(`sel-${type}`); });
+  updateSelUI(type);
+}
+function selNone(type) {
+  const topics = type==='exam'?EXAM_TOPICS:LAB_TOPICS;
+  topics.forEach(t => { state[type].sel.delete(t.id); document.getElementById(`${type}-card-${t.id}`).classList.remove(`sel-${type}`); });
+  updateSelUI(type);
+}
+function updateSelUI(type) {
+  const n = state[type].sel.size;
+  document.getElementById(`${type}-sel-count`).textContent = n + ' topic' + (n!==1?'s':'') + ' selected';
+  document.getElementById(`${type}-start-btn`).disabled = n === 0;
+}
+
+/* ═══════════════ MODE ═══════════════ */
+function setMode(type, mode) {
+  state[type].mode = mode;
+  const p = type==='exam'?'em':'lm';
+  document.getElementById(`${p}-mc`).className = 'mode-btn' + (mode==='mc'?` active-${type}`:'');
+  document.getElementById(`${p}-fc`).className = 'mode-btn' + (mode==='fc'?` active-${type}`:'');
+}
+
+/* ═══════════════ GAME FLOW ═══════════════ */
+function buildQs(type) {
+  const topics = type==='exam'?EXAM_TOPICS:LAB_TOPICS;
+  let pool = [];
+  topics.filter(t=>state[type].sel.has(t.id)).forEach(t => {
+    t.q.forEach(q => pool.push({...q, topicId:t.id, topicName:t.name}));
+  });
+  for (let i=pool.length-1;i>0;i--) { const j=Math.floor(Math.random()*(i+1)); [pool[i],pool[j]]=[pool[j],pool[i]]; }
+  return pool;
+}
+
+function startQuiz(type) {
+  const s = state[type];
+  s.qs = buildQs(type); s.idx = 0; s.score = 0; s.answered = false; s.fcFlipped = false;
+  document.getElementById(`${type}-selector`).style.display = 'none';
+  document.getElementById(`${type}-results`).style.display = 'none';
+  document.getElementById(`${type}-quiz`).style.display = 'block';
+  renderQ(type);
+}
+
+function renderQ(type) {
+  const s = state[type];
+  if (s.idx >= s.qs.length) { showResults(type); return; }
+  s.answered = false; s.fcFlipped = false;
+  const q = s.qs[s.idx];
+  const pct = (s.idx / s.qs.length) * 100;
+  document.getElementById(`${type}-pb`).style.width = pct + '%';
+  document.getElementById(`${type}-qmeta`).textContent = q.topicId + ' — ' + q.topicName;
+  document.getElementById(`${type}-qtext`).textContent = q.q;
+  document.getElementById(`${type}-feedback`).style.display = 'none';
+  document.getElementById(`${type}-next`).style.display = 'none';
+  document.getElementById(`${type}-score-nav`).textContent = s.score + ' / ' + s.idx;
+  if (s.mode === 'mc') renderMC(type, q);
+  else renderFC(type, q);
+}
+
+function renderMC(type, q) {
+  const area = document.getElementById(`${type}-choices-area`);
+  area.innerHTML = '<div class="choices"></div>';
+  const cl = area.querySelector('.choices');
+  q.choices.forEach((c, i) => {
+    const b = document.createElement('button');
+    b.className = 'choice-btn'; b.textContent = c;
+    b.onclick = () => pick(type, i, q);
+    cl.appendChild(b);
+  });
+}
+
+function pick(type, i, q) {
+  const s = state[type]; if (s.answered) return; s.answered = true;
+  const btns = document.querySelectorAll(`#${type}-choices-area .choice-btn`);
+  btns.forEach((b,idx) => { b.disabled=true; if(idx===q.correct) b.classList.add('correct'); else if(idx===i && i!==q.correct) b.classList.add('wrong'); });
+  const fb = document.getElementById(`${type}-feedback`);
+  if (i===q.correct) { s.score++; fb.className='feedback-box fb-correct'; fb.textContent='✓ Correct — '+q.a; }
+  else { fb.className='feedback-box fb-wrong'; fb.textContent='✗ '+q.a; }
+  fb.style.display='block';
+  document.getElementById(`${type}-score-nav`).textContent = s.score+' / '+(s.idx+1);
+  document.getElementById(`${type}-next`).style.display = 'inline-block';
+}
+
+function renderFC(type, q) {
+  const area = document.getElementById(`${type}-choices-area`);
+  area.innerHTML = `
+    <div class="fc-card" onclick="flipFC('${type}')">
+      <p class="fc-hint">Tap to reveal answer</p>
+      <div class="fc-answer ${type==='lab'?'fc-answer-lab':''}" id="${type}-fc-ans">${q.a}</div>
+    </div>
+    <div class="fc-btns" id="${type}-fc-btns">
+      <button class="fc-btn fc-got" onclick="fcRate('${type}',true)">Got it ✓</button>
+      <button class="fc-btn fc-miss" onclick="fcRate('${type}',false)">Still learning</button>
+    </div>`;
+}
+
+function flipFC(type) {
+  const s = state[type]; if (s.fcFlipped) return; s.fcFlipped = true;
+  document.getElementById(`${type}-fc-ans`).style.display = 'block';
+  document.getElementById(`${type}-fc-btns`).style.display = 'flex';
+}
+
+function fcRate(type, correct) {
+  const s = state[type]; if (s.answered) return; s.answered = true;
+  if (correct) s.score++;
+  document.getElementById(`${type}-score-nav`).textContent = s.score+' / '+(s.idx+1);
+  document.getElementById(`${type}-fc-btns`).style.display = 'none';
+  document.getElementById(`${type}-next`).style.display = 'inline-block';
+}
+
+function nextQ(type) { state[type].idx++; renderQ(type); }
+
+function showResults(type) {
+  const s = state[type];
+  document.getElementById(`${type}-quiz`).style.display = 'none';
+  document.getElementById(`${type}-results`).style.display = 'block';
+  const pct = Math.round((s.score / s.qs.length) * 100);
+  const ring = document.getElementById(`${type}-rpct`);
+  ring.textContent = pct + '%';
+  ring.className = 'result-pct ' + (pct>=80?'rp-great':pct>=50?'rp-ok':'rp-low');
+  document.getElementById(`${type}-rtitle`).textContent = pct>=80?'Great work!':pct>=50?'Good effort!':'Keep practicing!';
+  document.getElementById(`${type}-rmsg`).textContent = `You answered ${s.score} of ${s.qs.length} correctly.`;
+  document.getElementById(`${type}-rc`).textContent = s.score;
+  document.getElementById(`${type}-rw`).textContent = s.qs.length - s.score;
+  document.getElementById(`${type}-rp`).textContent = pct + '%';
+}
+
+init();
+</script>
+</body>
+</html>
