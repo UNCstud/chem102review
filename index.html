@@ -440,222 +440,379 @@ body::before {
 const EXAM_TOPICS = [
   { id:'10A', group:'Exam 1 — Thermochemistry & Solutions', name:'Potential energy & bonds', q:[
     {q:'What happens to potential energy when two atoms form a chemical bond?',a:'Decreases — bond formation is exothermic, releasing energy as attractive forces stabilize the system.',choices:['Increases, as energy is required','Decreases, as attractive forces stabilize the system','Stays the same','Increases then decreases'],correct:1},
-    {q:'Bond formation is classified as which type of process?',a:'Exothermic — energy is released to surroundings.',choices:['Endothermic','Isothermal','Exothermic','Isentropic'],correct:2}
+    {q:'Bond formation is classified as which type of process?',a:'Exothermic — energy is released to surroundings.',choices:['Endothermic','Isothermal','Exothermic','Isentropic'],correct:2},
+    {q:'Bond breaking requires energy and is therefore:',a:'Endothermic — energy must be added to overcome the attractive forces.',choices:['Exothermic','Endothermic','Isothermal','Spontaneous'],correct:1},
+    {q:'On a potential energy vs. internuclear distance graph, the equilibrium bond length is at:',a:'The minimum of the PE curve — most stable configuration.',choices:['The maximum PE point','Where PE = 0','The minimum PE point','Where slope = 1'],correct:2},
+    {q:'Which bond has the highest bond enthalpy?',a:'C≡C triple bond — more bonds means more energy required to break.',choices:['C–C single bond','C=C double bond','C≡C triple bond','C–H bond'],correct:2},
+    {q:'As two non-bonding atoms approach from a large distance, potential energy first:',a:'Decreases (attraction dominates) then increases sharply (repulsion dominates at very short distance).',choices:['Increases then decreases','Decreases then increases','Stays constant then increases','Increases only'],correct:0}
   ]},
   { id:'10B', group:'Exam 1 — Thermochemistry & Solutions', name:'System & surroundings', q:[
     {q:'Ice cream melting in your hand — what is the system?',a:'The ice cream is the system.',choices:['Your hand','The air','The ice cream','The sun'],correct:2},
-    {q:'Everything outside the system boundary is called:',a:'The surroundings.',choices:['The environment','The universe','The surroundings','The boundary'],correct:2}
+    {q:'Everything outside the system boundary is called:',a:'The surroundings.',choices:['The environment','The universe','The surroundings','The boundary'],correct:2},
+    {q:'An isolated system exchanges _______ with the surroundings.',a:'Neither energy nor matter.',choices:['Only energy','Only matter','Both energy and matter','Neither energy nor matter'],correct:3},
+    {q:'A sealed, insulated thermos is the best approximation of:',a:'An isolated system — no heat or matter exchange.',choices:['Open system','Closed system','Isolated system','Adiabatic open system'],correct:2},
+    {q:'When heat flows FROM the surroundings INTO the system, q for the system is:',a:'Positive — the system gains thermal energy.',choices:['Negative','Zero','Positive','Undefined'],correct:2},
+    {q:'A closed system:',a:'Exchanges energy but NOT matter with the surroundings.',choices:['Exchanges both energy and matter','Exchanges neither energy nor matter','Exchanges energy but not matter','Exchanges matter but not energy'],correct:2}
   ]},
   { id:'10C', group:'Exam 1 — Thermochemistry & Solutions', name:'Internal energy (ΔE)', q:[
     {q:'A system releases 250 J of heat; 150 J of work is done ON it. ΔE = ?',a:'ΔE = q + w = −250 + 150 = −100 J',choices:['+100 J','−400 J','−100 J','+400 J'],correct:2},
-    {q:'Work done ON the system has what sign?',a:'Positive (+), because energy enters the system.',choices:['Negative','Zero','Positive','Undefined'],correct:2}
+    {q:'Work done ON the system has what sign?',a:'Positive (+), because energy enters the system.',choices:['Negative','Zero','Positive','Undefined'],correct:2},
+    {q:'A gas expands against external pressure. The sign of w (work) for the system is:',a:'Negative — the system does work on the surroundings.',choices:['Positive','Negative','Zero','Depends on temperature'],correct:1},
+    {q:'A system absorbs 400 J of heat and does 150 J of work on surroundings. ΔE = ?',a:'ΔE = +400 + (−150) = +250 J',choices:['+550 J','+250 J','−250 J','−550 J'],correct:1},
+    {q:'The first law of thermodynamics states:',a:'Energy is conserved — ΔE_universe = 0.',choices:['Entropy always increases','Energy is conserved (ΔE_universe = 0)','Heat flows from cold to hot','ΔG < 0 for spontaneous processes'],correct:1},
+    {q:'The sign convention ΔE = q + w defines work as:',a:'Work done ON the system is positive; work done BY the system is negative.',choices:['Work BY the system is positive','Work ON the system is positive','Work is always negative','Work has no sign'],correct:1}
   ]},
   { id:'10D', group:'Exam 1 — Thermochemistry & Solutions', name:'Endothermic vs exothermic', q:[
     {q:'A flask feels cold during a reaction. The sign of ΔH is:',a:'Positive (+) — the reaction absorbed heat from surroundings (endothermic).',choices:['Negative (−)','Positive (+)','Zero','Cannot determine'],correct:1},
-    {q:'In an endothermic reaction, heat flows from:',a:'Surroundings → system.',choices:['System → surroundings','Surroundings → system','Both directions equally','Neither; no heat flows'],correct:1}
+    {q:'In an endothermic reaction, heat flows from:',a:'Surroundings → system.',choices:['System → surroundings','Surroundings → system','Both directions equally','Neither; no heat flows'],correct:1},
+    {q:'Which physical process is exothermic?',a:'Condensation — gas converting to liquid releases energy.',choices:['Melting','Evaporation','Sublimation','Condensation'],correct:3},
+    {q:'In an exothermic reaction, the products have _______ energy than the reactants.',a:'Lower — energy was released to the surroundings.',choices:['Higher','Lower','The same','Exactly zero'],correct:1},
+    {q:'Combustion of methane (CH₄ + 2O₂ → CO₂ + 2H₂O) is:',a:'Exothermic — burning releases large amounts of heat.',choices:['Endothermic','Isothermal','Exothermic','Neither'],correct:2},
+    {q:'If ΔH_rxn < 0, the reaction:',a:'Releases heat to the surroundings (exothermic).',choices:['Absorbs heat (endothermic)','Releases heat (exothermic)','Has no heat exchange','Requires a catalyst'],correct:1}
   ]},
   { id:'10E', group:'Exam 1 — Thermochemistry & Solutions', name:'State vs path functions', q:[
-    {q:'Which is a state function?',a:'Displacement — depends only on start and end points.',choices:['Distance traveled','Heat (q)','Work (w)','Displacement'],correct:3},
-    {q:'Enthalpy is a state function, meaning ΔH:',a:'Depends only on initial and final states, not the path taken.',choices:['Depends on reaction rate','Depends on the mechanism','Depends only on initial and final states','Is always zero'],correct:2}
+    {q:'Which is a state function?',a:'Internal energy E — depends only on the current state of the system.',choices:['Distance traveled','Heat (q)','Work (w)','Internal energy (E)'],correct:3},
+    {q:'Enthalpy is a state function, meaning ΔH:',a:'Depends only on initial and final states, not the path taken.',choices:['Depends on reaction rate','Depends on the mechanism','Depends only on initial and final states','Is always zero'],correct:2},
+    {q:'Which of the following is NOT a state function?',a:'Heat (q) — its value depends on the path taken.',choices:['Temperature','Pressure','Volume','Heat (q)'],correct:3},
+    {q:'Why is the state function property of ΔH useful?',a:'It allows us to calculate ΔH by any convenient path (e.g., Hess\'s law).',choices:['ΔH is always negative for state functions','It allows calculation via any convenient path','State functions are easier to measure','ΔH = 0 for all state functions'],correct:1},
+    {q:'Heat (q) is NOT a state function because:',a:'Its value depends on how the process is carried out (the path).',choices:['It has units of joules','It can be positive or negative','Its value depends on the path taken','It cannot be measured directly'],correct:2}
   ]},
   { id:'10F', group:'Exam 1 — Thermochemistry & Solutions', name:'Reaction enthalpy stoichiometry', q:[
-    {q:'ΔH = −5.00 MJ/mol for octane (MW=114). Energy from 2.28 kg?',a:'20 mol × 5.00 MJ/mol = 100 MJ',choices:['10 MJ','50 MJ','100 MJ','200 MJ'],correct:2}
+    {q:'ΔH = −5.00 MJ/mol for octane (MW=114 g/mol). Energy from 2.28 kg?',a:'20 mol × 5.00 MJ/mol = 100 MJ',choices:['10 MJ','50 MJ','100 MJ','200 MJ'],correct:2},
+    {q:'If 2H₂ + O₂ → 2H₂O, ΔH = −572 kJ. ΔH for H₂ + ½O₂ → H₂O?',a:'−286 kJ — halving the reaction halves ΔH.',choices:['−572 kJ','+286 kJ','−286 kJ','+572 kJ'],correct:2},
+    {q:'Reversing a chemical reaction:',a:'Changes the sign of ΔH — the magnitude stays the same.',choices:['Doubles ΔH','Halves ΔH','Changes the sign of ΔH','Has no effect on ΔH'],correct:2},
+    {q:'ΔH = −890 kJ/mol for CH₄ combustion. Heat released burning 4.00 mol CH₄?',a:'4 × 890 = 3560 kJ released',choices:['890 kJ','1780 kJ','3560 kJ','222.5 kJ'],correct:2},
+    {q:'ΔH for a reaction is −600 kJ as written. If you triple the stoichiometric coefficients, the new ΔH is:',a:'−1800 kJ — ΔH scales proportionally with stoichiometry.',choices:['−600 kJ','−200 kJ','−1800 kJ','+600 kJ'],correct:2}
   ]},
   { id:'10G', group:'Exam 1 — Thermochemistry & Solutions', name:'Enthalpy definition', q:[
     {q:'Enthalpy H is defined as:',a:'H = E + PV',choices:['H = E − PV','H = E / PV','H = E + PV','H = PV − E'],correct:2},
-    {q:'At constant pressure, ΔH equals:',a:'q_p — heat exchanged at constant pressure.',choices:['Work done','ΔE','q_p','PΔV'],correct:2}
+    {q:'At constant pressure, ΔH equals:',a:'q_p — heat exchanged at constant pressure.',choices:['Work done','ΔE','q_p','PΔV'],correct:2},
+    {q:'ΔH and ΔE are related by:',a:'ΔH = ΔE + PΔV at constant pressure.',choices:['ΔH = ΔE − PΔV','ΔH = ΔE + PΔV','ΔH = ΔE × PΔV','ΔH = ΔE / PΔV'],correct:1},
+    {q:'ΔH°_rxn from standard enthalpies of formation equals:',a:'ΣnΔH°f(products) − ΣnΔH°f(reactants)',choices:['ΣnΔH°f(reactants) − ΣnΔH°f(products)','ΣnΔH°f(products) − ΣnΔH°f(reactants)','ΣΔH°f(products) / ΣΔH°f(reactants)','Product of all ΔH°f values'],correct:1},
+    {q:'For N₂(g) + 3H₂(g) → 2NH₃(g), ΔH°f(NH₃) = −46 kJ/mol. ΔH°_rxn = ?',a:'2×(−46) − 0 = −92 kJ',choices:['−46 kJ','−92 kJ','+46 kJ','+92 kJ'],correct:1},
+    {q:'When does ΔH ≈ ΔE?',a:'When Δn_gas = 0 — no change in moles of gas, so PΔV ≈ 0.',choices:['Always','When T = 298 K','When Δn_gas = 0','When the reaction is exothermic'],correct:2}
   ]},
   { id:'10H', group:'Exam 1 — Thermochemistry & Solutions', name:'Phase & temperature changes', q:[
-    {q:'During vaporization at the boiling point, temperature:',a:'Stays constant — energy goes into the phase change.',choices:['Increases steadily','Decreases','Stays constant','Fluctuates'],correct:2},
-    {q:'Heating 10 g water from 25→100°C (Cs=4.18 J/g·K). Heat required?',a:'q = 10 × 4.18 × 75 = 3135 J ≈ 3.14 kJ',choices:['1.05 kJ','3.14 kJ','22.6 kJ','25.7 kJ'],correct:1}
+    {q:'During vaporization at the boiling point, temperature:',a:'Stays constant — energy goes into the phase change, not temperature rise.',choices:['Increases steadily','Decreases','Stays constant','Fluctuates'],correct:2},
+    {q:'Heating 10.0 g water from 25°C to 100°C (Cs = 4.18 J/g·K). Heat required?',a:'q = 10 × 4.18 × 75 = 3135 J ≈ 3.14 kJ',choices:['1.05 kJ','3.14 kJ','22.6 kJ','25.7 kJ'],correct:1},
+    {q:'Heat required to vaporize 2.00 mol water (ΔH_vap = 40.7 kJ/mol)?',a:'q = 2.00 × 40.7 = 81.4 kJ',choices:['20.4 kJ','40.7 kJ','81.4 kJ','162.8 kJ'],correct:2},
+    {q:'On a heating curve, the flat plateau represents:',a:'A phase transition at constant temperature — energy breaks IMFs, not raising T.',choices:['The sample cooling','A phase transition at constant T','The specific heat being zero','Maximum kinetic energy'],correct:1},
+    {q:'Which requires the most energy per mole of water?',a:'Vaporization — liquid to gas requires breaking all intermolecular forces.',choices:['Melting (s→l)','Vaporization (l→g)','Heating liquid from 0 to 100°C','Heating steam from 100 to 200°C'],correct:1},
+    {q:'Total heat to convert 50.0 g ice at 0°C to liquid water at 0°C (ΔH_fus = 6.01 kJ/mol)?',a:'(50/18) × 6.01 = 16.7 kJ',choices:['6.01 kJ','16.7 kJ','300 kJ','0.334 kJ'],correct:1}
   ]},
   { id:'10I', group:'Exam 1 — Thermochemistry & Solutions', name:'Calorimetry', q:[
     {q:'In a calorimetry experiment, q_rxn = −q_solution because:',a:'Energy is conserved — heat lost by reaction = heat gained by solution.',choices:['The reaction is always exothermic','Energy is conserved','The calorimeter absorbs all heat','Temperature must stay constant'],correct:1},
-    {q:'KBr dissolves and the temperature drops. The sign of ΔH_dissolution is:',a:'Positive (+) — the process is endothermic.',choices:['Negative (−)','Positive (+)','Zero','Depends on amount'],correct:1}
+    {q:'KBr dissolves and the temperature drops. The sign of ΔH_dissolution is:',a:'Positive (+) — the process is endothermic.',choices:['Negative (−)','Positive (+)','Zero','Depends on amount'],correct:1},
+    {q:'A bomb calorimeter measures reactions at:',a:'Constant volume — so it measures ΔE, not ΔH directly.',choices:['Constant pressure','Constant temperature','Constant volume','Constant entropy'],correct:2},
+    {q:'A coffee-cup calorimeter approximates:',a:'Constant pressure conditions — measures q_p = ΔH.',choices:['Constant volume','Constant pressure','Constant temperature','Zero heat loss'],correct:1},
+    {q:'If 50.0 mL of 1.00 M HCl mixes with 50.0 mL of 1.00 M NaOH and T rises 6.25°C, q_rxn = ? (assume d=1.00 g/mL, Cs=4.18 J/g·K)',a:'q_soln = 100 g × 4.18 × 6.25 = 2612.5 J; q_rxn = −2612.5 J ≈ −2.61 kJ',choices:['+2.61 kJ','−2.61 kJ','−26.1 kJ','+0.261 kJ'],correct:1},
+    {q:'The heat capacity of the calorimeter (C_cal) corrects for:',a:'Energy absorbed by the calorimeter walls itself.',choices:['Mass of the solution','Energy absorbed by the calorimeter','The heat of reaction','Radiation losses'],correct:1}
   ]},
   { id:'10J', group:'Exam 1 — Thermochemistry & Solutions', name:'Heat transfer', q:[
-    {q:'The fundamental heat-transfer equation for mixing two water samples is:',a:'q_hot + q_cold = 0 (conservation of energy).',choices:['q_hot = q_cold','q_hot + q_cold = 0','q = mcT alone','ΔH = ΔE + PΔV'],correct:1}
+    {q:'The fundamental heat-transfer equation for mixing two substances is:',a:'q_hot + q_cold = 0 (conservation of energy).',choices:['q_hot = q_cold','q_hot + q_cold = 0','q = mcT alone','ΔH = ΔE + PΔV'],correct:1},
+    {q:'100 g water at 80.0°C mixed with 200 g water at 20.0°C. Final temperature?',a:'T_f = (100×80 + 200×20)/(300) = 40.0°C',choices:['50.0°C','40.0°C','60.0°C','30.0°C'],correct:1},
+    {q:'A 50.0 g iron block (Cs = 0.449 J/g·K) at 200°C dropped into 100 g water at 25°C. Which statement is correct?',a:'Iron loses heat; water gains heat until they reach the same final temperature.',choices:['Iron gains heat from the water','Water cools the iron to 25°C immediately','Iron loses heat and water gains heat until equilibrium','No heat exchange occurs'],correct:2},
+    {q:'Two metals of equal mass are heated equally. Metal A reaches a higher temperature. Metal A has:',a:'A lower specific heat capacity.',choices:['Higher specific heat capacity','Lower specific heat capacity','Higher molar mass','Greater density'],correct:1}
   ]},
   { id:'10K', group:'Exam 1 — Thermochemistry & Solutions', name:"Hess's law", q:[
     {q:"Hess's Law states that ΔH for an overall reaction:",a:'Equals the sum of ΔH values for individual steps — it is path-independent.',choices:['Depends on the pathway','Equals the sum of ΔH for each step','Cannot be calculated indirectly','Is always negative'],correct:1},
-    {q:'A+B→C (ΔH=−100) and D→C (ΔH=+50). ΔH for A+B→D?',a:'Reverse D→C to get C→D (ΔH=−50). Sum: −100+(−50) = −150 kJ',choices:['−50 kJ','+150 kJ','−150 kJ','+50 kJ'],correct:2}
+    {q:'A+B→C (ΔH=−100 kJ) and D→C (ΔH=+50 kJ). ΔH for A+B→D?',a:'Reverse D→C to get C→D (ΔH=−50). Sum: −100+(−50) = −150 kJ',choices:['−50 kJ','+150 kJ','−150 kJ','+50 kJ'],correct:2},
+    {q:"Hess's Law works because enthalpy is a:",a:'State function — ΔH depends only on initial and final states.',choices:['Path function','State function','Rate function','Temperature function'],correct:1},
+    {q:'Given: C + O₂ → CO₂ (ΔH = −393.5 kJ) and CO + ½O₂ → CO₂ (ΔH = −283.0 kJ). ΔH for C + ½O₂ → CO?',a:'ΔH = −393.5 − (−283.0) = −110.5 kJ',choices:['−676.5 kJ','+110.5 kJ','−110.5 kJ','+676.5 kJ'],correct:2},
+    {q:'When you multiply a reaction by factor n, its ΔH is:',a:'Also multiplied by n.',choices:['Divided by n','Unchanged','Multiplied by n','Squared'],correct:2},
+    {q:"Hess's Law allows us to calculate ΔH for reactions that are:",a:'Difficult or impossible to measure directly in the lab.',choices:['Only exothermic','Only endothermic','Difficult or impossible to measure directly','Already at equilibrium'],correct:2}
   ]},
   { id:'10L', group:'Exam 1 — Thermochemistry & Solutions', name:'Formation equations', q:[
     {q:'A formation equation produces how many moles of the target compound?',a:'Exactly 1 mole.',choices:['2 moles','Any amount','1 mole','Depends on the compound'],correct:2},
-    {q:'Carbon in formation equations is written as:',a:'C(s, graphite) — the standard state of carbon.',choices:['C(g)','CO₂(g)','C(s, diamond)','C(s, graphite)'],correct:3}
+    {q:'Carbon in formation equations is written as:',a:'C(s, graphite) — the standard state of carbon.',choices:['C(g)','CO₂(g)','C(s, diamond)','C(s, graphite)'],correct:3},
+    {q:'The standard enthalpy of formation of any element in its standard state is:',a:'Zero — by definition.',choices:['Negative','Positive','Zero','Unknown without data'],correct:2},
+    {q:'Which correctly represents a formation reaction for liquid water?',a:'H₂(g) + ½O₂(g) → H₂O(l)',choices:['2H₂(g) + O₂(g) → 2H₂O(l)','H₂(g) + ½O₂(g) → H₂O(l)','H₂O(l) → H₂(g) + ½O₂(g)','H(g) + OH(g) → H₂O(l)'],correct:1},
+    {q:'ΔH°f values: CH₄=−74.8, CO₂=−393.5, H₂O(l)=−285.8 kJ/mol. ΔH°_rxn for CH₄ + 2O₂ → CO₂ + 2H₂O(l)?',a:'[−393.5 + 2(−285.8)] − [−74.8] = −890.3 kJ',choices:['−890.3 kJ','+890.3 kJ','−815.5 kJ','−964.8 kJ'],correct:0}
   ]},
   { id:'10M', group:'Exam 1 — Thermochemistry & Solutions', name:'Bond enthalpies', q:[
-    {q:'Bonds broken = 655 kJ; bonds formed = 760 kJ. ΔH = ?',a:'ΔH = 655 − 760 = −105 kJ/mol',choices:['+105 kJ/mol','−105 kJ/mol','+1415 kJ/mol','−655 kJ/mol'],correct:1}
+    {q:'Bonds broken = 655 kJ; bonds formed = 760 kJ. ΔH = ?',a:'ΔH = bonds broken − bonds formed = 655 − 760 = −105 kJ/mol',choices:['+105 kJ/mol','−105 kJ/mol','+1415 kJ/mol','−655 kJ/mol'],correct:1},
+    {q:'Bond enthalpy calculations give _______ estimates of ΔH.',a:'Approximate — bond enthalpies are averages that vary by molecular environment.',choices:['Exact','Approximate (averages)','Always too high','Always too low'],correct:1},
+    {q:'H–H = 436, Cl–Cl = 243, H–Cl = 431 kJ/mol. ΔH for H₂ + Cl₂ → 2HCl?',a:'ΔH = (436+243) − 2(431) = 679 − 862 = −183 kJ',choices:['+183 kJ','−183 kJ','−431 kJ','+679 kJ'],correct:1},
+    {q:'Breaking a bond always:',a:'Requires energy (endothermic process).',choices:['Releases energy','Requires energy (endothermic)','Has ΔH = 0','Depends on temperature'],correct:1},
+    {q:'Forming a bond always:',a:'Releases energy (exothermic process).',choices:['Requires energy (endothermic)','Releases energy (exothermic)','Has ΔH = 0','Depends on pressure'],correct:1}
   ]},
-  { id:'12A-G', group:'Exam 1 — Thermochemistry & Solutions', name:'Colligative properties', q:[
+  { id:'12A-G', group:'Exam 1 — Thermochemistry & Solutions', name:'Colligative properties & solutions', q:[
     {q:'Water in osmosis moves toward the solution with:',a:'Higher solute concentration, to equalize chemical potential.',choices:['Lower solute concentration','Higher solute concentration','Warmer temperature','Higher pressure'],correct:1},
-    {q:'Osmotic pressure for 0.5 M NaCl (i=2) at 25°C?',a:'Π = iMRT = 2×0.5×0.0821×298 ≈ 24.5 atm',choices:['12.3 atm','6.1 atm','24.5 atm','49.0 atm'],correct:2},
-    {q:'Rank vapor pressure: 1M sucrose, 1M NaCl, 1M BaCl₂ (highest first)',a:'Sucrose > NaCl > BaCl₂ — more particles = more VP lowering.',choices:['BaCl₂ > NaCl > Sucrose','Sucrose > NaCl > BaCl₂','NaCl > Sucrose > BaCl₂','All equal'],correct:1},
-    {q:'As temperature increases, gas solubility in water:',a:'Decreases — gas dissolution is exothermic, so higher T disfavors it.',choices:['Increases','Decreases','Stays the same','First increases then decreases'],correct:1},
-    {q:"Henry's Law: C = kP. k=3.0×10⁻² M/atm, P=4.0 atm. C = ?",a:'C = kP = 0.03 × 4.0 = 0.12 M',choices:['0.03 M','0.12 M','0.48 M','7.5 M'],correct:1}
+    {q:'Osmotic pressure for 0.50 M NaCl (i=2) at 25°C (R=0.0821 L·atm/mol·K)?',a:'Π = iMRT = 2×0.50×0.0821×298 ≈ 24.5 atm',choices:['12.3 atm','6.1 atm','24.5 atm','49.0 atm'],correct:2},
+    {q:'Rank vapor pressure (highest first): 1M sucrose, 1M NaCl, 1M BaCl₂',a:'Sucrose > NaCl > BaCl₂ — more dissolved particles = greater VP lowering.',choices:['BaCl₂ > NaCl > Sucrose','Sucrose > NaCl > BaCl₂','NaCl > Sucrose > BaCl₂','All equal'],correct:1},
+    {q:'As temperature increases, gas solubility in water:',a:'Decreases — dissolution of gas is exothermic; higher T shifts equilibrium left.',choices:['Increases','Decreases','Stays the same','First increases then decreases'],correct:1},
+    {q:"Henry's Law: C = kH·P. kH = 3.0×10⁻² M/atm, P = 4.0 atm. C = ?",a:'C = 0.03 × 4.0 = 0.12 M',choices:['0.03 M','0.12 M','0.48 M','7.5 M'],correct:1},
+    {q:'The Clausius-Clapeyron equation relates:',a:'Vapor pressure and temperature for a pure substance.',choices:['Solubility and pressure','Vapor pressure and temperature','Osmotic pressure and concentration','Entropy and enthalpy'],correct:1},
+    {q:'Boiling point elevation is given by:',a:'ΔTb = i·Kb·m',choices:['ΔTb = i·Kf·m','ΔTb = i·Kb·m','ΔTb = Kb·m / i','ΔTb = RT ln K'],correct:1},
+    {q:'2.00 g of non-electrolyte (MW = 100 g/mol) in 500 g water. ΔTf (Kf = 1.86 °C/m)?',a:'m = (0.02 mol)/(0.500 kg) = 0.040 m; ΔTf = 1×1.86×0.040 = 0.0744°C',choices:['0.037°C','0.074°C','0.186°C','0.744°C'],correct:1},
+    {q:'Osmotic pressure measurements can determine:',a:'Molar mass of a solute — using Π = iMRT, solve for M, then MW = mass/mol.',choices:['Bond enthalpy','Molar mass','Vapor pressure directly','Activation energy'],correct:1},
+    {q:'Raoult\'s Law states that the vapor pressure of a solution is:',a:'P_soln = χ_solvent × P°_solvent',choices:['Equal to pure solvent VP always','Greater than pure solvent VP','χ_solvent × P°_solvent','Independent of solute identity and amount'],correct:2}
   ]},
-  { id:'11A-D', group:'Exam 2 — Kinetics & Thermodynamics', name:'Thermodynamic laws', q:[
-    {q:'The 2nd Law of Thermodynamics states:',a:'ΔS_univ > 0 for any spontaneous process.',choices:['Energy is conserved','ΔS_univ > 0 for spontaneous processes','Entropy is zero at 0 K','Heat flows from cold to hot'],correct:1},
+  { id:'11A-D', group:'Exam 2 — Kinetics & Thermodynamics', name:'Entropy & thermodynamic laws', q:[
+    {q:'The 2nd Law of Thermodynamics states:',a:'ΔS_universe > 0 for any spontaneous process.',choices:['Energy is conserved','ΔS_universe > 0 for spontaneous processes','Entropy is zero at 0 K','Heat flows from cold to hot'],correct:1},
     {q:'For H₂O(l) → H₂O(s), signs of ΔH and ΔS are:',a:'ΔH(−), ΔS(−) — releases heat, becomes more ordered.',choices:['ΔH(+), ΔS(+)','ΔH(−), ΔS(−)','ΔH(+), ΔS(−)','ΔH(−), ΔS(+)'],correct:1},
-    {q:'Entropy rank: He(g), Ne(g), Ar(g)',a:'He < Ne < Ar — entropy increases with atomic mass.',choices:['Ar < Ne < He','He < Ne < Ar','Ne < He < Ar','All equal'],correct:1}
+    {q:'Entropy rank: He(g), Ne(g), Ar(g)',a:'He < Ne < Ar — entropy increases with atomic mass and complexity.',choices:['Ar < Ne < He','He < Ne < Ar','Ne < He < Ar','All equal'],correct:1},
+    {q:'The 3rd Law of Thermodynamics states:',a:'The entropy of a perfect crystal at 0 K is zero.',choices:['Energy is always conserved','ΔS_universe > 0 for spontaneous reactions','Entropy of a perfect crystal at 0 K = 0','ΔG < 0 for all reactions'],correct:2},
+    {q:'Which process has a positive ΔS?',a:'Gas expansion into a vacuum — increases microstates and disorder.',choices:['Water freezing','Gas compression','Salt crystallizing from solution','Gas expansion into vacuum'],correct:3},
+    {q:'Standard molar entropy S° is largest for:',a:'Gases — they have the most freedom of motion and highest number of microstates.',choices:['Solids','Liquids','Gases','All states are the same'],correct:2},
+    {q:'Rank by S°: N₂(g), NH₃(g), N₂H₄(g)',a:'N₂ < NH₃ < N₂H₄ — more complex molecules have more vibrational modes.',choices:['N₂H₄ < NH₃ < N₂','N₂ < NH₃ < N₂H₄','NH₃ < N₂ < N₂H₄','All equal'],correct:1},
+    {q:'ΔS_rxn for N₂(g) + 3H₂(g) → 2NH₃(g) is expected to be:',a:'Negative — 4 moles of gas become 2 moles, reducing entropy.',choices:['Positive (more products)','Negative (fewer moles of gas)','Zero','Cannot determine'],correct:1}
   ]},
   { id:'11E-H', group:'Exam 2 — Kinetics & Thermodynamics', name:'Gibbs energy & favorability', q:[
-    {q:'ΔG° for ΔH°=−196 kJ and ΔS°=+126 J/K at 298 K?',a:'ΔG = −196 − 298(0.126) = −233.5 kJ/mol',choices:['−158.5 kJ/mol','−233.5 kJ/mol','+233.5 kJ/mol','−196 kJ/mol'],correct:1},
-    {q:'ΔH=+26.4 kJ, ΔS=+109 J/K. Favorable above what T?',a:'T > ΔH/ΔS = 26400/109 ≈ 242 K',choices:['Above 100 K','Above 242 K','Above 500 K','Always favorable'],correct:1},
-    {q:'An exergonic reaction has:',a:'ΔG < 0 — spontaneous.',choices:['ΔG > 0','ΔG = 0','ΔG < 0','ΔH < 0 only'],correct:2}
+    {q:'ΔG° for ΔH° = −196 kJ and ΔS° = +126 J/K at 298 K?',a:'ΔG° = −196 − 298(0.126) = −233.5 kJ/mol',choices:['−158.5 kJ/mol','−233.5 kJ/mol','+233.5 kJ/mol','−196 kJ/mol'],correct:1},
+    {q:'ΔH = +26.4 kJ, ΔS = +109 J/K. At what T does the reaction become favorable?',a:'T > ΔH/ΔS = 26400/109 ≈ 242 K',choices:['Above 100 K','Above 242 K','Above 500 K','Always favorable'],correct:1},
+    {q:'An exergonic reaction has:',a:'ΔG < 0 — it is spontaneous as written.',choices:['ΔG > 0','ΔG = 0','ΔG < 0','ΔH < 0 only'],correct:2},
+    {q:'ΔG = 0 at equilibrium means:',a:'There is no net driving force — the system has reached its lowest free energy.',choices:['The reaction is spontaneous','The reaction is nonspontaneous','The system is at equilibrium','The reaction is exothermic'],correct:2},
+    {q:'When ΔH < 0 and ΔS > 0, the reaction is:',a:'Spontaneous at ALL temperatures.',choices:['Only spontaneous at high T','Only spontaneous at low T','Never spontaneous','Spontaneous at all temperatures'],correct:3},
+    {q:'When ΔH > 0 and ΔS < 0, the reaction is:',a:'Nonspontaneous at all temperatures.',choices:['Spontaneous at high T','Spontaneous at low T','Nonspontaneous at all temperatures','Spontaneous only at 0 K'],correct:2},
+    {q:'ΔG°_rxn can be calculated from Gibbs energies of formation as:',a:'ΣnΔG°f(products) − ΣnΔG°f(reactants)',choices:['ΔH° only','ΔS° alone','ΣnΔG°f(products) − ΣnΔG°f(reactants)','−nFE°_cell only'],correct:2},
+    {q:'An endergonic reaction has:',a:'ΔG > 0 — it is nonspontaneous as written.',choices:['ΔG < 0','ΔG = 0','ΔG > 0','ΔH > 0 always'],correct:2}
   ]},
   { id:'13A-D', group:'Exam 2 — Kinetics & Thermodynamics', name:'Reaction rates & rate laws', q:[
-    {q:'Doubling [A] quadruples rate; doubling [B] doubles rate. Rate law?',a:'Rate = k[A]²[B]',choices:['Rate = k[A][B]','Rate = k[A]²[B]','Rate = k[A][B]²','Rate = k[A]²[B]²'],correct:1},
-    {q:'For 2A→B, A disappears at 0.10 M/s. Rate of B appearance?',a:'0.05 M/s — half the rate of A disappearance.',choices:['0.10 M/s','0.20 M/s','0.05 M/s','0.025 M/s'],correct:2},
-    {q:'The instantaneous rate from a [C] vs time graph is found by:',a:'Drawing the tangent line at that point and finding its slope.',choices:['Average of all data slopes','Tangent slope at that point','y-intercept of the curve','Total change / total time'],correct:1}
+    {q:'Doubling [A] quadruples the rate; doubling [B] doubles the rate. Rate law?',a:'Rate = k[A]²[B]',choices:['Rate = k[A][B]','Rate = k[A]²[B]','Rate = k[A][B]²','Rate = k[A]²[B]²'],correct:1},
+    {q:'For 2A → B, [A] disappears at 0.10 M/s. Rate of B appearance?',a:'0.05 M/s — B forms at half the rate A disappears (stoichiometry).',choices:['0.10 M/s','0.20 M/s','0.05 M/s','0.025 M/s'],correct:2},
+    {q:'The instantaneous rate from a [C] vs. time graph is found by:',a:'Drawing the tangent line at that point and calculating its slope.',choices:['Average of all data slopes','Tangent slope at that point','y-intercept of the curve','Total Δ[C] / total time'],correct:1},
+    {q:'Collision theory requires two conditions for an effective collision:',a:'Sufficient energy (≥ Ea) AND proper orientation of reactants.',choices:['High T and low pressure','Sufficient energy and proper orientation','Large surface area and a catalyst','Low activation energy only'],correct:1},
+    {q:'Units of the rate constant k for a second-order reaction are:',a:'M⁻¹s⁻¹',choices:['s⁻¹','M·s⁻¹','M⁻¹s⁻¹','Unitless'],correct:2},
+    {q:'For a zero-order reaction, the rate is:',a:'Constant and independent of reactant concentration.',choices:['Proportional to [A]','Proportional to [A]²','Constant, independent of [A]','Zero'],correct:2},
+    {q:'The overall reaction order for Rate = k[A]²[B] is:',a:'3rd order overall (2 + 1 = 3).',choices:['1st order','2nd order','3rd order','4th order'],correct:2}
   ]},
   { id:'13E-G', group:'Exam 2 — Kinetics & Thermodynamics', name:'Integrated rate laws & half-life', q:[
-    {q:'A plot of 1/[A] vs time is linear. Reaction order?',a:'Second order.',choices:['Zero order','First order','Second order','Third order'],correct:2},
-    {q:'k = 0.32 day⁻¹. t₁/₂ = ?',a:'t₁/₂ = 0.693 / 0.32 ≈ 2.17 days',choices:['0.32 days','2.17 days','3.13 days','1.0 day'],correct:1},
-    {q:'1st order: k=0.1 s⁻¹, [A]₀=1.0 M. [A] after 5 s?',a:'[A] = e^(−0.5) ≈ 0.61 M',choices:['0.50 M','0.61 M','0.90 M','0.37 M'],correct:1}
+    {q:'A plot of 1/[A] vs. time is linear. Reaction order?',a:'Second order.',choices:['Zero order','First order','Second order','Third order'],correct:2},
+    {q:'k = 0.32 day⁻¹. t₁/₂ = ?',a:'t₁/₂ = 0.693 / 0.32 ≈ 2.17 days',choices:['0.32 days','2.17 days','3.13 days','1.00 day'],correct:1},
+    {q:'1st order: k = 0.100 s⁻¹, [A]₀ = 1.00 M. [A] after 5.00 s?',a:'[A] = 1.00 × e^(−0.100×5) = e^(−0.5) ≈ 0.607 M',choices:['0.500 M','0.607 M','0.900 M','0.368 M'],correct:1},
+    {q:'Integrated rate law for a zero-order reaction:',a:'[A] = [A]₀ − kt',choices:['[A] = [A]₀ e^(−kt)','ln[A] = −kt + ln[A]₀','[A] = [A]₀ − kt','1/[A] = kt + 1/[A]₀'],correct:2},
+    {q:'Which plot gives a straight line for a first-order reaction?',a:'ln[A] vs. time',choices:['[A] vs. time','ln[A] vs. time','1/[A] vs. time','[A]² vs. time'],correct:1},
+    {q:'Half-life of a second-order reaction depends on:',a:'Initial concentration — t₁/₂ = 1/(k[A]₀).',choices:['Only k','Temperature only','Initial concentration [A]₀','Both T and pressure'],correct:2},
+    {q:'For a first-order reaction, how many half-lives to reduce [A] to 12.5% of [A]₀?',a:'3 half-lives: 100% → 50% → 25% → 12.5%',choices:['1','2','3','4'],correct:2}
   ]},
   { id:'13H-M', group:'Exam 2 — Kinetics & Thermodynamics', name:'Arrhenius, mechanisms & catalysts', q:[
-    {q:'A 10°C rise doubles rate because:',a:'It increases the fraction of molecules exceeding Ea.',choices:['It doubles concentration','It changes Ea','It increases fraction of molecules exceeding Ea','It eliminates the need for collisions'],correct:2},
-    {q:'The peak of a reaction energy diagram represents:',a:'The transition state (activated complex).',choices:['Products','Reactants','Transition state','Activation energy'],correct:2},
-    {q:'A catalyst lowers Ea by:',a:'Providing an alternative reaction pathway.',choices:['Increasing temperature','Providing an alternative pathway','Removing products','Increasing concentration'],correct:1},
-    {q:'Requirement for a valid reaction mechanism:',a:'Steps sum to overall reaction AND rate-determining step matches experimental rate law.',choices:['Only one step allowed','Steps sum to overall rxn AND match rate law','Must involve a catalyst','Forward and reverse rates must be equal'],correct:1}
+    {q:'A 10°C temperature rise doubles the rate because:',a:'More molecules have enough energy to exceed Ea — the fraction with E ≥ Ea increases.',choices:['It doubles concentration','It lowers Ea','More molecules exceed Ea','It eliminates the need for collisions'],correct:2},
+    {q:'The peak on a reaction energy diagram represents:',a:'The transition state (activated complex).',choices:['Products','Reactants','Transition state','The catalyst'],correct:2},
+    {q:'A catalyst lowers Ea by:',a:'Providing an alternative lower-energy reaction pathway.',choices:['Increasing temperature','Providing an alternative pathway','Removing products','Increasing reactant concentration'],correct:1},
+    {q:'Requirement for a valid reaction mechanism:',a:'Elementary steps must sum to the overall reaction AND the rate law from the slow step must match the experimental rate law.',choices:['Only one step is allowed','Steps sum to overall AND rate law matches experiment','Must involve a catalyst','Forward and reverse rates must be equal'],correct:1},
+    {q:'The Arrhenius equation is:',a:'k = A·e^(−Ea/RT)',choices:['k = A·e^(Ea/RT)','k = A·e^(−Ea/RT)','k = RT/Ea','k = A/Ea'],correct:1},
+    {q:'To find Ea from rate constants at two temperatures, use:',a:'ln(k₂/k₁) = −(Ea/R)(1/T₂ − 1/T₁)',choices:['ΔG = −RT ln K','ln(k₂/k₁) = −(Ea/R)(1/T₂ − 1/T₁)','t₁/₂ = 0.693/k','Rate = k[A][B]'],correct:1},
+    {q:'A reaction intermediate is:',a:'A species produced in one step and consumed in a later step; it does not appear in the overall equation.',choices:['A catalyst','A reactant in the first step','A product in the final step','Produced and consumed within the mechanism'],correct:3},
+    {q:'The rate-determining step is:',a:'The slowest elementary step — it controls the overall reaction rate.',choices:['The fastest step','The first step','The step with the highest Ea','The slowest step'],correct:3}
   ]},
   { id:'14A-E', group:'Exam 2 — Kinetics & Thermodynamics', name:'Equilibrium expressions & Q', q:[
-    {q:'At dynamic equilibrium:',a:'Forward and reverse rates are equal; concentrations remain constant but reactions continue.',choices:['All reactions stop','Only forward continues','Forward = reverse rates; concentrations constant','Concentrations are all equal'],correct:2},
-    {q:'Kc for CaCO₃(s) ⇌ CaO(s) + CO₂(g)?',a:'Kc = [CO₂] — pure solids excluded.',choices:['Kc = [CaO][CO₂]/[CaCO₃]','Kc = [CO₂]','Kc = [CaCO₃]/[CaO]','Kc = 1/[CO₂]'],correct:1},
-    {q:'Kc = 4.3×10⁶, Q = 4.0×10³. Reaction shifts:',a:'Right (toward products) because Q < K.',choices:['Left','Right','No shift','Cannot determine'],correct:1},
-    {q:'Forward K = 0.212. Reverse K = ?',a:'1 / 0.212 ≈ 4.72',choices:['0.212','2.12','4.72','0.472'],correct:2}
+    {q:'At dynamic equilibrium:',a:'Forward and reverse rates are equal; concentrations remain constant.',choices:['All reactions stop','Only forward continues','Forward = reverse rates; concentrations constant','All concentrations are equal'],correct:2},
+    {q:'Kc for CaCO₃(s) ⇌ CaO(s) + CO₂(g)?',a:'Kc = [CO₂] — pure solids are excluded from K expressions.',choices:['Kc = [CaO][CO₂]/[CaCO₃]','Kc = [CO₂]','Kc = [CaCO₃]/[CaO]','Kc = 1/[CO₂]'],correct:1},
+    {q:'Kc = 4.3×10⁶ and Q = 4.0×10³. The reaction shifts:',a:'Right — Q < K, so more products form.',choices:['Left','Right','No shift','Cannot determine'],correct:1},
+    {q:'Forward K = 0.212. Reverse K = ?',a:'K_rev = 1/0.212 ≈ 4.72',choices:['0.212','2.12','4.72','0.472'],correct:2},
+    {q:'Kp and Kc are related by:',a:'Kp = Kc(RT)^Δn, where Δn = moles gas products − moles gas reactants.',choices:['Kp = Kc always','Kp = Kc/RT','Kp = Kc(RT)^Δn','Kp = Kc + nRT'],correct:2},
+    {q:'For N₂ + 3H₂ ⇌ 2NH₃, the equilibrium expression is:',a:'Kc = [NH₃]² / ([N₂][H₂]³)',choices:['Kc = [N₂][H₂]³/[NH₃]²','Kc = [NH₃]²/([N₂][H₂]³)','Kc = [NH₃]/([N₂][H₂])','Kc = 2[NH₃]/([N₂]+3[H₂])'],correct:1},
+    {q:'A RICE table is used to:',a:'Organize initial concentrations, changes, and equilibrium values to solve for K or unknown concentrations.',choices:['Calculate ΔH via Hess\'s law','Solve equilibrium concentration problems','Determine rate laws from experiments','Balance redox reactions'],correct:1},
+    {q:'If Q > K, the reaction proceeds:',a:'Left (toward reactants) to decrease Q toward K.',choices:['Right','Left','No shift','Stops permanently'],correct:1}
   ]},
-  { id:'14F-J', group:'Exam 2 — Kinetics & Thermodynamics', name:"Le Chatelier & Gibbs vs K", q:[
-    {q:'N₂ + 3H₂ ⇌ 2NH₃ (exothermic). Increasing temperature shifts:',a:'Left — heat treated as product, adding heat shifts toward reactants.',choices:['Right','Left','No shift','Increases K'],correct:1},
-    {q:'K = 1.5×10⁻⁵. ΔG° at 298 K?',a:'ΔG° = −RT ln K ≈ +27.5 kJ/mol',choices:['−27.5 kJ/mol','+27.5 kJ/mol','0 kJ/mol','+54 kJ/mol'],correct:1}
+  { id:'14F-J', group:'Exam 2 — Kinetics & Thermodynamics', name:"Le Chatelier, Gibbs & K", q:[
+    {q:'N₂ + 3H₂ ⇌ 2NH₃ (exothermic). Increasing temperature shifts equilibrium:',a:'Left — heat is a product; adding heat shifts toward reactants.',choices:['Right','Left','No shift','K increases'],correct:1},
+    {q:'K = 1.5×10⁻⁵ at 298 K. ΔG° = ?',a:'ΔG° = −RT ln K = −(8.314)(298)ln(1.5×10⁻⁵) ≈ +27.5 kJ/mol',choices:['−27.5 kJ/mol','+27.5 kJ/mol','0 kJ/mol','+54 kJ/mol'],correct:1},
+    {q:'For N₂ + 3H₂ ⇌ 2NH₃, increasing pressure shifts equilibrium:',a:'Right — fewer moles of gas on the right; high pressure favors that side.',choices:['Left','Right','No shift','Decreases K'],correct:1},
+    {q:'Adding a catalyst to an equilibrium system:',a:'Speeds up both forward and reverse reactions equally; K and the equilibrium position are unchanged.',choices:['Shifts equilibrium right','Shifts equilibrium left','Increases K','Does not change K or equilibrium position'],correct:3},
+    {q:'The van\'t Hoff equation is used to:',a:'Calculate K at a new temperature from ΔH° and K at another temperature.',choices:['Find Ea from rate data','Find K at a new temperature using ΔH°','Determine ΔS directly','Calculate reaction rate'],correct:1},
+    {q:'Large K (>>1) means:',a:'Products strongly favored at equilibrium.',choices:['Reactants strongly favored','Products strongly favored','Equal amounts of reactants and products','Fast reaction rate'],correct:1},
+    {q:'ΔG° < 0 corresponds to K:',a:'K > 1 — products favored; reaction spontaneous in forward direction.',choices:['K < 1','K = 1','K > 1','K = 0'],correct:2}
   ]},
-  { id:'15A-B', group:'Exam 2 — Kinetics & Thermodynamics', name:'Acid strength', q:[
-    {q:'H₂S or H₂Te: which is the stronger acid?',a:'H₂Te — bond strength decreases down the group, making H⁺ easier to release.',choices:['H₂S','H₂Te','They are equal','Depends on concentration'],correct:1},
-    {q:'Higher Ka means:',a:'Stronger acid — greater degree of ionization.',choices:['Weaker acid','Stronger acid','More basic','Less soluble'],correct:1}
+  { id:'15A-B', group:'Exam 3 — Acids, Bases & Buffers', name:'Acid & base strength', q:[
+    {q:'H₂S or H₂Te: which is the stronger acid?',a:'H₂Te — bond strength decreases down the group, making H⁺ easier to release.',choices:['H₂S','H₂Te','Equal strength','Depends on concentration'],correct:1},
+    {q:'Higher Ka means:',a:'Stronger acid — greater degree of ionization in water.',choices:['Weaker acid','Stronger acid','More basic','Less soluble'],correct:1},
+    {q:'For binary hydracids (HX), acid strength increases going:',a:'Down the group — larger atoms form weaker, longer bonds to H.',choices:['Up the group','Down the group','Left to right across period','With decreasing atomic number'],correct:1},
+    {q:'For oxyacids with the same central atom (e.g., HClO vs HClO₄), acid strength increases with:',a:'More oxygen atoms — they pull electron density away, stabilizing the conjugate base.',choices:['Fewer oxygen atoms','More oxygen atoms','Higher molar mass','Lower bond polarity'],correct:1},
+    {q:'pKa and Ka are related by:',a:'pKa = −log(Ka); lower pKa = stronger acid.',choices:['pKa = log(Ka); lower pKa = weaker acid','pKa = −log(Ka); lower pKa = stronger acid','pKa = Ka/10','pKa = −Ka'],correct:1},
+    {q:'HCl vs HF: which is the stronger acid?',a:'HCl — the H–Cl bond is much weaker than H–F, so HCl ionizes completely.',choices:['HF (more polar bond)','HCl (weaker, longer bond)','Equal','Depends on concentration'],correct:1}
   ]},
-  { id:'15C-F', group:'Exam 3 — Acids, Bases & Buffers', name:'pH & conjugate pairs', q:[
+  { id:'15C-F', group:'Exam 3 — Acids, Bases & Buffers', name:'pH calculations & conjugate pairs', q:[
     {q:'Conjugate base of NH₄⁺?',a:'NH₃ — loses one H⁺.',choices:['NH₂⁻','NH₃','N²⁻','NH₅⁺'],correct:1},
-    {q:'pH = 2.35. [OH⁻] = ?',a:'[H⁺]=4.47×10⁻³; [OH⁻]=Kw/[H⁺]≈2.2×10⁻¹² M',choices:['4.47×10⁻³ M','2.2×10⁻¹² M','1.0×10⁻⁷ M','11.65 M'],correct:1},
-    {q:'pH of 0.10 M Sr(OH)₂?',a:'[OH⁻]=0.20 M; pOH=0.70; pH=13.30',choices:['12.70','13.30','13.00','7.00'],correct:1}
+    {q:'pH = 2.35. [OH⁻] = ?',a:'[H⁺]=4.47×10⁻³ M; [OH⁻] = Kw/[H⁺] ≈ 2.2×10⁻¹² M',choices:['4.47×10⁻³ M','2.2×10⁻¹² M','1.0×10⁻⁷ M','11.65 M'],correct:1},
+    {q:'pH of 0.10 M Sr(OH)₂?',a:'[OH⁻] = 2×0.10 = 0.20 M; pOH = 0.70; pH = 13.30',choices:['12.70','13.30','13.00','7.00'],correct:1},
+    {q:'The conjugate acid of HCO₃⁻ is:',a:'H₂CO₃ — gains one H⁺.',choices:['CO₃²⁻','H₂CO₃','H₃O⁺','H₂O'],correct:1},
+    {q:'pH + pOH = ? at 25°C',a:'14.00 (since Kw = 1.0×10⁻¹⁴)',choices:['7.00','10.00','14.00','1.00'],correct:2},
+    {q:'pH of 0.050 M HCl (strong acid)?',a:'pH = −log(0.050) = 1.30',choices:['2.30','1.30','0.70','13.70'],correct:1},
+    {q:'In CH₃COOH + H₂O ⇌ CH₃COO⁻ + H₃O⁺, identify the conjugate pairs:',a:'CH₃COOH/CH₃COO⁻ and H₂O/H₃O⁺',choices:['CH₃COOH/H₂O','CH₃COOH/CH₃COO⁻ and H₂O/H₃O⁺','H₃O⁺/OH⁻','CH₃COO⁻/H₃O⁺ only'],correct:1}
   ]},
-  { id:'15G-L', group:'Exam 3 — Acids, Bases & Buffers', name:'Weak acids/bases & salts', q:[
+  { id:'15G-L', group:'Exam 3 — Acids, Bases & Buffers', name:'Weak acids, bases, salts & RICE', q:[
     {q:'As weak acid concentration decreases, % ionization:',a:'Increases — dilution shifts equilibrium toward ionization.',choices:['Decreases','Increases','Stays the same','Reaches 100%'],correct:1},
-    {q:'Why is Ka₁ >> Ka₂ for polyprotic acids?',a:'Harder to remove a proton from a negatively charged ion.',choices:['Second proton is larger','Harder to remove H⁺ from a negatively charged ion','Ka₂ involves a stronger bond','Water blocks ionization'],correct:1},
-    {q:'Is NaF solution acidic or basic?',a:'Basic — F⁻ hydrolyzes to give OH⁻.',choices:['Acidic','Basic','Neutral','Depends on temperature'],correct:1}
+    {q:'Why is Ka₁ >> Ka₂ for polyprotic acids?',a:'It is harder to remove H⁺ from an already negatively charged ion.',choices:['Second proton is larger','Harder to remove H⁺ from a negative ion','Ka₂ involves a stronger bond','Water blocks second ionization'],correct:1},
+    {q:'Is NaF solution acidic, basic, or neutral?',a:'Basic — F⁻ is the conjugate base of weak acid HF; it accepts H⁺ from water.',choices:['Acidic','Basic','Neutral','Depends on temperature'],correct:1},
+    {q:'The 5% rule: the approximation [HA]_eq ≈ [HA]₀ is valid when:',a:'[H⁺]/[HA]₀ × 100% < 5%',choices:['Ka > 10⁻⁵','[H⁺]/[HA]₀ × 100% < 5%','The acid is monoprotic','Temperature is 25°C'],correct:1},
+    {q:'Ka × Kb for a conjugate acid-base pair equals:',a:'Kw = 1.0×10⁻¹⁴ at 25°C',choices:['Ka/Kb','Kw = 1.0×10⁻¹⁴','1.0','Depends on the acid'],correct:1},
+    {q:'pH of 0.10 M acetic acid (Ka = 1.8×10⁻⁵)?',a:'[H⁺] = √(1.8×10⁻⁵×0.10) = 1.34×10⁻³ M; pH = 2.87',choices:['2.87','4.74','1.00','5.00'],correct:0},
+    {q:'NH₄Cl dissolved in water gives:',a:'Acidic solution — NH₄⁺ donates H⁺ to water (conjugate acid of weak base NH₃).',choices:['Basic solution','Neutral solution','Acidic solution','Depends on concentration'],correct:2},
+    {q:'Which salt solution is basic?',a:'Na₂CO₃ — CO₃²⁻ is the conjugate base of weak acid HCO₃⁻; hydrolyzes to give OH⁻.',choices:['NaCl','NH₄NO₃','Na₂CO₃','KBr'],correct:2}
   ]},
-  { id:'16A-E', group:'Exam 3 — Acids, Bases & Buffers', name:'Buffers', q:[
-    {q:'Henderson-Hasselbalch: pH for 0.25M NH₃ / 0.40M NH₄⁺ (pKa=9.25)?',a:'pH = 9.25 + log(0.25/0.40) = 9.05',choices:['9.45','9.05','9.25','8.85'],correct:1},
-    {q:'Buffer capacity is highest when:',a:'[Acid] = [Base] and total concentrations are high.',choices:['pH = 7.00','[Acid]=[Base] and concentrations are high','Only acid is present','T = 0°C'],correct:1},
-    {q:'Adding HCl to NH₃/NH₄⁺ buffer — what reaction occurs?',a:'NH₃ + H⁺ → NH₄⁺',choices:['NH₄⁺ + OH⁻ → NH₃ + H₂O','NH₃ + H⁺ → NH₄⁺','Cl⁻ + H₂O → HCl + OH⁻','No reaction'],correct:1}
+  { id:'16A-E', group:'Exam 3 — Acids, Bases & Buffers', name:'Buffers & common ion effect', q:[
+    {q:'Henderson-Hasselbalch: pH for 0.25 M NH₃ / 0.40 M NH₄⁺ (pKa = 9.25)?',a:'pH = 9.25 + log(0.25/0.40) = 9.25 − 0.20 = 9.05',choices:['9.45','9.05','9.25','8.85'],correct:1},
+    {q:'Buffer capacity is highest when:',a:'[HA] = [A⁻] and total concentrations are high.',choices:['pH = 7.00','[HA]=[A⁻] and concentrations are high','Only acid is present','T = 0°C'],correct:1},
+    {q:'Adding HCl to an NH₃/NH₄⁺ buffer — what reaction occurs?',a:'NH₃ + H⁺ → NH₄⁺',choices:['NH₄⁺ + OH⁻ → NH₃ + H₂O','NH₃ + H⁺ → NH₄⁺','Cl⁻ + H₂O → HCl + OH⁻','No reaction'],correct:1},
+    {q:'The common ion effect: adding NaF to HF solution:',a:'Suppresses ionization of HF — equilibrium shifts left, [H⁺] decreases.',choices:['Increases ionization of HF','Suppresses ionization of HF','Increases Ka','Has no effect on equilibrium'],correct:1},
+    {q:'To prepare a buffer at pH = 5.00 using acetic acid (pKa = 4.74):',a:'You need [A⁻]/[HA] = 10^(5.00−4.74) = 10^0.26 ≈ 1.82 (more base than acid).',choices:['Equal amounts of acid and base','More acid (ratio ≈ 0.55)','More conjugate base (ratio ≈ 1.82)','Only acetic acid is needed'],correct:2},
+    {q:'Adding NaOH to an acetic acid/acetate buffer:',a:'OH⁻ + CH₃COOH → CH₃COO⁻ + H₂O — acid is consumed, pH rises slightly.',choices:['Has no effect on pH','Destroys the buffer immediately','Converts acid to conjugate base; pH rises slightly','Precipitates acetate'],correct:2},
+    {q:'A buffer resists pH change by:',a:'Using a weak acid to neutralize added base and its conjugate base to neutralize added acid.',choices:['Absorbing all added ions','Having pH = 7.00 always','Using weak acid/base pair to neutralize added H⁺ or OH⁻','Reacting with the solvent'],correct:2}
   ]},
-  { id:'16F-J', group:'Exam 3 — Acids, Bases & Buffers', name:'Titrations & solubility', q:[
-    {q:'At the half-equivalence point of a weak acid titration:',a:'pH = pKa',choices:['pH = 7.00','pH = pKa','[HA] = 2[A⁻]','The solution is neutral'],correct:1},
-    {q:'Ksp(AgCl) = 1.8×10⁻¹⁰. Molar solubility s?',a:'s = √(1.8×10⁻¹⁰) ≈ 1.3×10⁻⁵ M',choices:['1.8×10⁻¹⁰ M','1.3×10⁻⁵ M','3.4×10⁻⁵ M','9.0×10⁻¹¹ M'],correct:1},
-    {q:'Decreasing pH increases Mg(OH)₂ solubility because:',a:'H⁺ consumes OH⁻, shifting equilibrium toward dissolution.',choices:['Lower pH increases Ksp','H⁺ consumes OH⁻, shifting dissolution right','Mg²⁺ precipitates','pH has no effect'],correct:1}
+  { id:'16F-J', group:'Exam 3 — Acids, Bases & Buffers', name:'Titrations & solubility equilibria', q:[
+    {q:'At the half-equivalence point of a weak acid titration:',a:'pH = pKa — exactly half the weak acid has been converted to conjugate base.',choices:['pH = 7.00','pH = pKa','[HA] = 2[A⁻]','The solution is neutral'],correct:1},
+    {q:'Ksp(AgCl) = 1.8×10⁻¹⁰. Molar solubility s = ?',a:'s = √(1.8×10⁻¹⁰) ≈ 1.3×10⁻⁵ M',choices:['1.8×10⁻¹⁰ M','1.3×10⁻⁵ M','3.4×10⁻⁵ M','9.0×10⁻¹¹ M'],correct:1},
+    {q:'Decreasing pH increases Mg(OH)₂ solubility because:',a:'H⁺ reacts with OH⁻, removing a product and shifting dissolution equilibrium right.',choices:['Lower pH increases Ksp','H⁺ consumes OH⁻, shifting dissolution right','Mg²⁺ precipitates at low pH','pH has no effect on solubility'],correct:1},
+    {q:'At the equivalence point in a strong acid–strong base titration:',a:'pH = 7.00 — only neutral salt and water are present.',choices:['pH = pKa','pH < 7','pH = 7','pH > 7'],correct:2},
+    {q:'At the equivalence point in a weak acid–strong base titration, pH is:',a:'Greater than 7 — the conjugate base of the weak acid hydrolyzes to give OH⁻.',choices:['pH = 7','pH < 7','pH > 7','pH = pKa'],correct:2},
+    {q:'For PbF₂ ⇌ Pb²⁺ + 2F⁻, Ksp = 3.7×10⁻⁸. Molar solubility s?',a:'Ksp = s(2s)² = 4s³; s = (3.7×10⁻⁸/4)^(1/3) ≈ 2.1×10⁻³ M',choices:['6.1×10⁻³ M','2.1×10⁻³ M','3.7×10⁻⁸ M','1.9×10⁻⁴ M'],correct:1},
+    {q:'AgCl is _______ soluble in 0.10 M NaCl than in pure water.',a:'Less — the added Cl⁻ (common ion) shifts AgCl dissolution equilibrium left.',choices:['More','Less','Equally','Infinitely more'],correct:1}
   ]},
-  { id:'17A-F', group:'Final — Electrochemistry', name:'Redox & galvanic cells', q:[
-    {q:'Oxidation number of Cr in Cr₂O₇²⁻?',a:'+6 (from 2x + 7(−2) = −2)',choices:['+3','+6','+7','+12'],correct:1},
-    {q:'In Zn | Zn²⁺ || Cu²⁺ | Cu, the cathode is:',a:'Cu — reduction occurs at the cathode.',choices:['Zn','Cu','The salt bridge','Both equally'],correct:1},
-    {q:'More positive E°_red means stronger:',a:'Oxidizing agent — more easily reduced.',choices:['Reducing agent','Oxidizing agent','Acid','Base'],correct:1},
-    {q:'E°_cell: Al³⁺/Al=−1.66V, Ni²⁺/Ni=−0.25V?',a:'E°_cell = −0.25 − (−1.66) = +1.41 V',choices:['−1.41 V','−1.91 V','+1.41 V','+1.91 V'],correct:2}
+  { id:'17A-F', group:'Final — Electrochemistry', name:'Redox, half-reactions & galvanic cells', q:[
+    {q:'Oxidation number of Cr in Cr₂O₇²⁻?',a:'+6 — from 2x + 7(−2) = −2, x = +6.',choices:['+3','+6','+7','+12'],correct:1},
+    {q:'In the cell Zn | Zn²⁺ || Cu²⁺ | Cu, the cathode is:',a:'Cu — reduction (Cu²⁺ + 2e⁻ → Cu) occurs at the cathode.',choices:['Zn','Cu','The salt bridge','Both electrodes equally'],correct:1},
+    {q:'More positive E°_red means a species is a stronger:',a:'Oxidizing agent — it is more easily reduced.',choices:['Reducing agent','Oxidizing agent','Acid','Base'],correct:1},
+    {q:'E°_cell for Al³⁺/Al = −1.66 V and Ni²⁺/Ni = −0.25 V?',a:'E°_cell = E°_cathode − E°_anode = −0.25 − (−1.66) = +1.41 V',choices:['−1.41 V','−1.91 V','+1.41 V','+1.91 V'],correct:2},
+    {q:'In a galvanic cell, oxidation occurs at the:',a:'Anode — it is the negative electrode; metal is oxidized.',choices:['Cathode','Anode','Salt bridge','Both electrodes'],correct:1},
+    {q:'The salt bridge in a galvanic cell:',a:'Allows ion migration to maintain electrical neutrality in each half-cell.',choices:['Transfers electrons between electrodes','Provides the oxidizing agent','Allows ion migration to maintain charge neutrality','Stores electrical energy'],correct:2},
+    {q:'A positive E°_cell indicates:',a:'A spontaneous reaction (ΔG° < 0).',choices:['Nonspontaneous reaction','Spontaneous reaction (ΔG° < 0)','Equilibrium condition','An electrolytic process'],correct:1},
+    {q:'In the half-reaction Cr₂O₇²⁻ → 2Cr³⁺ (acidic solution), you must add:',a:'H₂O to balance O, then H⁺ to balance H, then electrons to balance charge.',choices:['Only electrons','H₂O and H⁺ and electrons','OH⁻ and H₂O','Nothing — it is already balanced'],correct:1}
   ]},
-  { id:'17G-K', group:'Final — Electrochemistry', name:'Nernst, electrolysis & electroplating', q:[
-    {q:'ΔG° for E°_cell=+1.10V, n=2?',a:'ΔG° = −nFE° = −2×96485×1.10 ≈ −212 kJ/mol',choices:['+212 kJ/mol','−212 kJ/mol','−106 kJ/mol','+106 kJ/mol'],correct:1},
-    {q:'As a galvanic cell runs, E (cell potential):',a:'Decreases — Q increases until E = 0 at equilibrium.',choices:['Increases','Decreases until E = 0','Stays constant','Oscillates'],correct:1},
-    {q:'Mass of Ag plated by 2.5 A for 15 min?',a:'Q=2250 C; mol e⁻=0.0233; mass=2.52 g',choices:['0.252 g','2.52 g','25.2 g','0.023 g'],correct:1}
+  { id:'17G-K', group:'Final — Electrochemistry', name:'Nernst equation, ΔG, and electrolysis', q:[
+    {q:'ΔG° for E°_cell = +1.10 V, n = 2?',a:'ΔG° = −nFE° = −2×96485×1.10 ≈ −212 kJ/mol',choices:['+212 kJ/mol','−212 kJ/mol','−106 kJ/mol','+106 kJ/mol'],correct:1},
+    {q:'As a galvanic cell discharges, E_cell:',a:'Decreases — Q increases as reactants are consumed, until E = 0 at equilibrium.',choices:['Increases','Decreases to zero','Stays constant','Oscillates'],correct:1},
+    {q:'Mass of Ag plated by 2.5 A for 15 min (Ag⁺ + e⁻ → Ag, MW = 107.9)?',a:'Q = 2.5×900 = 2250 C; mol e⁻ = 2250/96485 = 0.0233; mass = 0.0233×107.9 ≈ 2.51 g',choices:['0.252 g','2.51 g','25.2 g','0.023 g'],correct:1},
+    {q:'The Nernst equation is:',a:'E = E° − (RT/nF) ln Q',choices:['E = E° + RT ln K','E = E° − (RT/nF) ln Q','E = ΔG°/nF','E = RT/nF × ln K'],correct:1},
+    {q:'At equilibrium in a galvanic cell, E_cell = 0 and:',a:'Q = K — the reaction has reached equilibrium.',choices:['The reaction is complete','Q = 0','E° = 0','Q = K and ΔG = 0'],correct:3},
+    {q:'An electrolytic cell differs from a galvanic cell in that it:',a:'Uses external electrical energy to drive a thermodynamically unfavorable reaction.',choices:['Converts chemical energy to electrical energy','Requires no energy input','Uses electrical energy to drive a nonspontaneous reaction','Has E°_cell > 0'],correct:2},
+    {q:'The relationship ΔG° = −nFE° = −RT ln K shows:',a:'Standard cell potential, free energy, and equilibrium constant are all interconnected.',choices:['Only E° and K are related','Only ΔG° and E° are related','E°, ΔG°, and K are all interconnected','This applies only to electrolytic cells'],correct:2}
   ]},
-  { id:'18AB', group:'Final — Electrochemistry', name:'Solid types', q:[
-    {q:'Diamond is classified as:',a:'Network covalent solid — covalent bonds throughout 3D lattice.',choices:['Ionic','Molecular','Metallic','Network covalent'],correct:3},
-    {q:'NaCl is classified as:',a:'Ionic solid — held by electrostatic attraction.',choices:['Network covalent','Molecular','Ionic','Metallic'],correct:2}
+  { id:'18AB', group:'Final — Electrochemistry', name:'Solid-state types', q:[
+    {q:'Diamond is classified as:',a:'Network covalent solid — covalent bonds extend throughout the 3D lattice.',choices:['Ionic','Molecular','Metallic','Network covalent'],correct:3},
+    {q:'NaCl is classified as:',a:'Ionic solid — held by electrostatic attraction between Na⁺ and Cl⁻.',choices:['Network covalent','Molecular','Ionic','Metallic'],correct:2},
+    {q:'Ice (H₂O solid) is classified as:',a:'Molecular solid — individual water molecules held together by hydrogen bonding.',choices:['Ionic','Network covalent','Metallic','Molecular'],correct:3},
+    {q:'Metallic solids conduct electricity because:',a:'They have a sea of delocalized electrons that can flow freely.',choices:['They have ionic bonds that migrate','Delocalized electrons flow freely','They have strong covalent bonds','They dissolve in water releasing ions'],correct:1},
+    {q:'Which type of solid generally has the highest melting points?',a:'Network covalent — strong covalent bonds throughout require enormous energy to break.',choices:['Molecular solids','Ionic solids','Metallic solids','Network covalent solids'],correct:3},
+    {q:'Silicon (Si) is best classified as:',a:'Network covalent — each Si is covalently bonded to four others in a diamond-like structure.',choices:['Metallic','Ionic','Molecular','Network covalent'],correct:3},
+    {q:'A solid that is brittle, has a high melting point, and does NOT conduct electricity is most likely:',a:'Ionic or network covalent solid.',choices:['Metallic solid','Molecular solid','Ionic or network covalent solid','Liquid crystal'],correct:2}
   ]}
 ];
 
 const LAB_TOPICS = [
   { id:'LAB-1', group:'Lab Fundamentals & Safety', name:'SDS, PPE & safety features', q:[
-    {q:'What does SDS stand for, and what is its primary purpose?',a:'Safety Data Sheet — provides chemical hazard, handling, and emergency information.',choices:['Standard Data Sheet — records lab results','Safety Data Sheet — provides hazard and handling information','Substance Descriptor Summary — lists chemical properties','System Data Sheet — tracks equipment'],correct:1},
-    {q:'Which PPE is always required in a chemistry lab?',a:'Safety goggles, lab coat, and closed-toe shoes at minimum.',choices:['Gloves only','Safety goggles only','Goggles, lab coat, and closed-toe shoes','Gloves and a face shield only'],correct:2},
-    {q:'An eyewash station is used when:',a:'A chemical splashes into the eyes — flush immediately for 15 minutes.',choices:['A spill occurs on the bench','Chemicals contact the eyes — flush 15 minutes','Equipment breaks','A fire starts'],correct:1}
+    {q:'What does SDS stand for, and what is its primary purpose?',a:'Safety Data Sheet — provides chemical hazard, handling, and emergency information.',choices:['Standard Data Sheet — records lab results','Safety Data Sheet — provides hazard and handling info','Substance Descriptor Summary — lists chemical properties','System Data Sheet — tracks equipment'],correct:1},
+    {q:'Which PPE is always required in a chemistry lab?',a:'Safety goggles, lab coat, and closed-toe shoes at minimum.',choices:['Gloves only','Safety goggles only','Goggles, lab coat, and closed-toe shoes','Gloves and face shield only'],correct:2},
+    {q:'An eyewash station is used when:',a:'A chemical splashes into the eyes — flush immediately for at least 15 minutes.',choices:['A spill occurs on the bench','Chemicals contact the eyes — flush 15 min','Equipment breaks','A fire starts'],correct:1},
+    {q:'The SDS section covering first aid measures is:',a:'Section 4 — describes what to do in case of exposure.',choices:['Section 1','Section 4','Section 8','Section 16'],correct:1},
+    {q:'When disposing of chemical waste, you should:',a:'Follow the specific waste disposal instructions for each chemical as outlined in the lab procedure and SDS.',choices:['Pour everything down the drain with water','Dispose in regular trash','Follow the specific waste disposal instructions','Leave waste in the fume hood'],correct:2}
   ]},
   { id:'LAB-2', group:'Lab Fundamentals & Safety', name:'Significant figures & measurements', q:[
-    {q:'How many significant figures are in 0.00450?',a:'3 — leading zeros are not significant; trailing zeros after decimal are.',choices:['2','3','5','6'],correct:1},
-    {q:'5.43 × 10² expressed in standard notation is:',a:'543',choices:['54.3','543','5430','0.0543'],correct:1},
-    {q:'When multiplying measurements, the result should have:',a:'The same number of significant figures as the measurement with fewest sig figs.',choices:['The most sig figs of any measurement','The fewest sig figs of any measurement','Exactly 3 sig figs','As many decimals as possible'],correct:1}
+    {q:'How many significant figures are in 0.00450?',a:'3 — leading zeros are not significant; trailing zeros after a decimal point are.',choices:['2','3','5','6'],correct:1},
+    {q:'5.43 × 10² in standard notation is:',a:'543',choices:['54.3','543','5430','0.0543'],correct:1},
+    {q:'When multiplying measurements, the result should have:',a:'The same number of sig figs as the measurement with the fewest sig figs.',choices:['The most sig figs of any measurement','The fewest sig figs of any measurement','Exactly 3 sig figs always','As many decimal places as possible'],correct:1},
+    {q:'A graduated cylinder reading gives 24.5 mL. This value has:',a:'3 significant figures.',choices:['1','2','3','4'],correct:2},
+    {q:'When adding 12.11 + 0.3 + 1.523, the result should be reported as:',a:'13.9 — limited by 0.3 which has only one decimal place.',choices:['13.933','13.93','13.9','14'],correct:2}
   ]},
   { id:'LAB-3', group:'Lab Fundamentals & Safety', name:'Net ionic equations', q:[
-    {q:'In a net ionic equation, which species are omitted?',a:'Spectator ions — ions that appear unchanged on both sides.',choices:['All cations','All anions','Spectator ions that are unchanged on both sides','Solid precipitates'],correct:2},
-    {q:'Solid ionic compounds appear in net ionic equations only when:',a:'They are dissolving or precipitating (not as spectator ions in solution).',choices:['They are in excess','They are dissolving or precipitating','They have a charge > 2','They are transition metals'],correct:1}
+    {q:'In a net ionic equation, which species are omitted?',a:'Spectator ions — ions that appear unchanged on both sides.',choices:['All cations','All anions','Spectator ions (unchanged on both sides)','Solid precipitates'],correct:2},
+    {q:'Solid ionic compounds appear in net ionic equations as:',a:'Formula units (not separated into ions) when they are precipitating or dissolving.',choices:['Separated into ions always','Formula units when precipitating or dissolving','Omitted always','Only as cations'],correct:1},
+    {q:'Net ionic equation for AgNO₃(aq) + NaCl(aq) → AgCl(s) + NaNO₃(aq):',a:'Ag⁺(aq) + Cl⁻(aq) → AgCl(s)',choices:['AgNO₃ + NaCl → AgCl + NaNO₃','Ag⁺ + NO₃⁻ + Na⁺ + Cl⁻ → AgCl + Na⁺ + NO₃⁻','Ag⁺(aq) + Cl⁻(aq) → AgCl(s)','Ag⁺ + Na⁺ → AgCl'],correct:2},
+    {q:'Strong acids and bases in solution are written as:',a:'Fully dissociated ions — they are strong electrolytes.',choices:['Molecular formulas','Fully dissociated ions','Partial ions','Solid formulas'],correct:1}
   ]},
   { id:'THR-1', group:'Thermochemistry Lab (THR)', name:'Endothermic vs exothermic processes', q:[
-    {q:'In a calorimetry experiment, the temperature of the solution increases. The reaction is:',a:'Exothermic — heat released by reaction raises solution temperature.',choices:['Endothermic','Exothermic','Isothermal','At equilibrium'],correct:1},
-    {q:'On a temperature vs. time graph, an endothermic dissolution shows:',a:'A temperature drop in the solution during dissolution.',choices:['A temperature increase','A temperature drop','No temperature change','A curved plateau'],correct:1}
+    {q:'In a calorimetry experiment, the temperature of the solution increases. The reaction is:',a:'Exothermic — heat released by reaction warms the surrounding solution.',choices:['Endothermic','Exothermic','Isothermal','At equilibrium'],correct:1},
+    {q:'On a temperature vs. time graph, an endothermic dissolution shows:',a:'A temperature drop in the solution during dissolution.',choices:['A temperature increase','A temperature drop','No temperature change','A curved plateau'],correct:1},
+    {q:'q_rxn and q_solution are related by:',a:'q_rxn = −q_solution — energy conserved between reaction and solution.',choices:['q_rxn = q_solution','q_rxn = −q_solution','q_rxn = q_solution / 2','q_rxn = 2q_solution'],correct:1},
+    {q:'Which lab observation indicates an exothermic dissolution?',a:'The temperature of the solution rises during dissolving.',choices:['Temperature drops','Temperature stays constant','Temperature rises','The solid glows'],correct:2}
   ]},
   { id:'THR-2', group:'Thermochemistry Lab (THR)', name:'Calorimetry calculations', q:[
-    {q:'The formula for heat absorbed by a solution is:',a:'q_sol = m × C × ΔT',choices:['q = nΔHf','q_sol = m × C × ΔT','q = PΔV','q = ΔH / n'],correct:1},
-    {q:'If q_solution = −850 J, what is q_reaction (assuming no heat loss to calorimeter)?',a:'+850 J — q_rxn = −q_solution',choices:['−850 J','+850 J','0 J','−1700 J'],correct:1},
-    {q:'Enthalpy of reaction per mole is calculated as:',a:'ΔH = q_rxn / n_analyte',choices:['ΔH = q_sol × n','ΔH = q_rxn / n_analyte','ΔH = ΣΔHf products','ΔH = q_sol / m'],correct:1}
+    {q:'The formula for heat absorbed by a solution is:',a:'q_sol = m × Cs × ΔT',choices:['q = nΔHf','q_sol = m × Cs × ΔT','q = PΔV','q = ΔH/n'],correct:1},
+    {q:'If q_solution = −850 J, what is q_reaction (assuming no heat loss to calorimeter)?',a:'+850 J — q_rxn = −q_solution (energy conservation).',choices:['−850 J','+850 J','0 J','−1700 J'],correct:1},
+    {q:'Enthalpy of reaction per mole is calculated as:',a:'ΔH_rxn = q_rxn / n_analyte',choices:['ΔH = q_sol × n','ΔH = q_rxn / n_analyte','ΔH = ΣΔHf products','ΔH = q_sol / m'],correct:1},
+    {q:'In a calorimetry experiment, the "analyte" whose moles you use in ΔH = q/n is:',a:'The limiting reagent — the species that determines the extent of reaction.',choices:['The solvent','The species with largest mass','The limiting reagent','Always the acid'],correct:2},
+    {q:'Why do we use 4.18 J/g·°C as the specific heat of the solution?',a:'We assume dilute aqueous solutions have roughly the same specific heat as water.',choices:['It is the specific heat of all chemicals','We assume dilute solutions ≈ specific heat of water','It is always exact for any solution','It is the specific heat of glass'],correct:1}
   ]},
   { id:'THR-3', group:'Thermochemistry Lab (THR)', name:"Hess's law & formation enthalpies", q:[
-    {q:"Hess's Law works because enthalpy is a:",a:"State function — ΔH depends only on initial and final states.",choices:['Path function','State function','Rate function','Kinetic function'],correct:1},
-    {q:'ΔH°_rxn from formation enthalpies:',a:'ΔH°_rxn = ΣnΔH°f(products) − ΣnΔH°f(reactants)',choices:['ΣnΔH°f(reactants) − ΣnΔH°f(products)','ΣnΔH°f(products) − ΣnΔH°f(reactants)','ΣnΔH°f(products) only','Product of all ΔH°f values'],correct:1}
+    {q:"Hess's Law works because enthalpy is a:",a:'State function — ΔH depends only on initial and final states.',choices:['Path function','State function','Rate function','Kinetic function'],correct:1},
+    {q:'ΔH°_rxn from standard formation enthalpies:',a:'ΔH°_rxn = ΣnΔH°f(products) − ΣnΔH°f(reactants)',choices:['ΣnΔH°f(reactants) − ΣnΔH°f(products)','ΣnΔH°f(products) − ΣnΔH°f(reactants)','ΣnΔH°f(products) only','Product of all ΔH°f values'],correct:1},
+    {q:'In the THR lab, multiple reactions are combined using Hess\'s Law to find:',a:'The ΔH for a reaction that cannot be measured directly.',choices:['The rate constant','The equilibrium constant','ΔH for an inaccessible reaction','The activation energy'],correct:2},
+    {q:'If you reverse a reaction when applying Hess\'s Law, you must:',a:'Change the sign of ΔH for that step.',choices:['Double ΔH','Change the sign of ΔH','Square ΔH','Divide ΔH by 2'],correct:1}
   ]},
   { id:'ERR-1', group:'Error Analysis', name:'Precision vs accuracy', q:[
     {q:'A set of measurements clusters tightly but is far from the true value. This describes:',a:'High precision, low accuracy.',choices:['High accuracy, low precision','High precision, low accuracy','Low precision, low accuracy','High precision, high accuracy'],correct:1},
-    {q:'Which type of error is equally likely to be too high or too low?',a:'Random error — affects precision.',choices:['Systematic error','Random error','Calibration error','Human error'],correct:1}
+    {q:'Which type of error is equally likely to be too high or too low?',a:'Random error — it affects precision and scatters measurements.',choices:['Systematic error','Random error','Calibration error','Human bias'],correct:1},
+    {q:'Accuracy refers to:',a:'How close a measurement is to the true (accepted) value.',choices:['How reproducible measurements are','How close to the true value','The range of measurements','The number of trials'],correct:1},
+    {q:'Precision refers to:',a:'How reproducible or consistent repeated measurements are with each other.',choices:['How close to the true value','How reproducible repeated measurements are','The number of significant figures','Low random error only'],correct:1}
   ]},
-  { id:'ERR-2', group:'Error Analysis', name:'Systematic vs random error', q:[
-    {q:'A scale consistently reads 0.5 g too heavy. This is:',a:'Systematic error — skewed in one direction, affects accuracy.',choices:['Random error','Systematic error','Both types equally','Negligible error'],correct:1},
-    {q:'Relative error is calculated as:',a:'|Measured − True| / True × 100%',choices:['(Measured − True) / Measured × 100%','|Measured − True| / True × 100%','|Measured − True| × 100','True / Measured × 100%'],correct:1}
+  { id:'ERR-2', group:'Error Analysis', name:'Systematic vs random error & relative error', q:[
+    {q:'A scale consistently reads 0.5 g too heavy. This is:',a:'Systematic error — consistently biased in one direction.',choices:['Random error','Systematic error','Both equally','Negligible error'],correct:1},
+    {q:'Relative (percent) error is calculated as:',a:'|Measured − True| / True × 100%',choices:['(Measured − True) / Measured × 100%','|Measured − True| / True × 100%','|Measured − True| × 100','True / Measured × 100%'],correct:1},
+    {q:'Systematic error can be reduced by:',a:'Recalibrating equipment and improving the experimental method.',choices:['Taking more measurements','Recalibrating equipment and improving the method','Averaging results','Using larger samples'],correct:1},
+    {q:'Random error can be reduced by:',a:'Increasing the number of trials and averaging — random errors tend to cancel.',choices:['Recalibrating the balance','Increasing the number of trials and averaging','Using a different reagent','Changing the temperature'],correct:1}
   ]},
   { id:'COL-1', group:'Colligative Properties Lab (COL)', name:"van't Hoff factor & molality", q:[
     {q:"The van't Hoff factor (i) for NaCl in water is approximately:",a:'2 — NaCl dissociates into Na⁺ and Cl⁻.',choices:['1','2','3','0.5'],correct:1},
     {q:'Molality is defined as:',a:'Moles of solute per kilogram of solvent.',choices:['mol/L solution','mol/kg solvent','g/L solution','mol/mol solution'],correct:1},
-    {q:'Colligative properties depend on:',a:"The number of solute particles (i × m), not their identity.",choices:['Solute identity only','Solute size','Number of solute particles (i × m)','Temperature only'],correct:2}
+    {q:'Colligative properties depend on:',a:'The total number of dissolved particles (i × m), not their chemical identity.',choices:['Solute identity only','Solute particle size','Number of solute particles (i × m)','Temperature only'],correct:2},
+    {q:"The van't Hoff factor for glucose (a non-electrolyte) is:",a:'1 — glucose does not dissociate.',choices:['0','1','2','6'],correct:1},
+    {q:'Molality is preferred over molarity for colligative property calculations because:',a:'Molality is independent of temperature; molarity changes as volume expands/contracts.',choices:['Molality is easier to calculate','Molality does not change with temperature','Molality always gives whole numbers','Molality accounts for solute mass'],correct:1}
   ]},
   { id:'COL-2', group:'Colligative Properties Lab (COL)', name:'Freezing point depression & thermal curves', q:[
-    {q:'The freezing point depression equation is:',a:'ΔTf = −iKfm',choices:['ΔTf = iKbm','ΔTf = −iKfm','ΔTf = Kf / m','ΔTf = iKf / m'],correct:1},
-    {q:'On a cooling curve, the flat region represents:',a:'A phase change — temperature stays constant as solid forms.',choices:['Rapid cooling','A phase change at constant temperature','The solution boiling','Error in measurement'],correct:1},
-    {q:'To find molar mass from ΔTf data, you need:',a:'ΔTf, Kf, mass of solvent, and mass of solute.',choices:['ΔTf and Ka only','ΔTf, Kf, mass of solvent, mass of solute','Density and volume only','pH and concentration'],correct:1}
+    {q:'The freezing point depression equation is:',a:'ΔTf = −i·Kf·m',choices:['ΔTf = i·Kb·m','ΔTf = −i·Kf·m','ΔTf = Kf/m','ΔTf = i·Kf/m'],correct:1},
+    {q:'On a cooling curve, the flat region (plateau) represents:',a:'A phase transition — temperature stays constant as the solid phase forms.',choices:['Rapid cooling','A phase transition at constant T','The solution boiling','A measurement error'],correct:1},
+    {q:'To find molar mass from ΔTf data, you need:',a:'ΔTf, Kf, mass of solvent, and mass of solute.',choices:['ΔTf and Ka only','ΔTf, Kf, mass of solvent, mass of solute','Density and volume only','pH and concentration'],correct:1},
+    {q:'A solution of 5.00 g of unknown in 100.0 g benzene (Kf = 5.12 °C/m) depresses the FP by 1.02°C. Molar mass?',a:'m = 1.02/5.12 = 0.199 m; mol = 0.199×0.100 = 0.0199; MW = 5.00/0.0199 ≈ 251 g/mol',choices:['50 g/mol','126 g/mol','251 g/mol','502 g/mol'],correct:2},
+    {q:'The freezing point of a solution is _______ than the freezing point of the pure solvent.',a:'Lower — solute particles disrupt crystal lattice formation.',choices:['Higher','Lower','The same','Unpredictable'],correct:1}
   ]},
-  { id:'SPEC-1', group:"Spectrophotometry & Beer's Law", name:"Beer's law principles", q:[
+  { id:'SPEC-1', group:"Spectrophotometry & Beer's Law", name:"Beer's Law principles", q:[
     {q:"Beer's Law (A = εlC) states that absorbance is:",a:'Directly proportional to analyte concentration.',choices:['Inversely proportional to concentration','Directly proportional to concentration','Independent of concentration','Proportional to wavelength'],correct:1},
-    {q:'λ_max is defined as:',a:'The wavelength most strongly absorbed by the analyte.',choices:['The wavelength of maximum emission','The wavelength most strongly absorbed by the analyte','The longest wavelength in the spectrum','The wavelength at which absorbance = 0'],correct:1},
-    {q:'An absorption spectrum plots:',a:'Absorbance (A) vs. wavelength (λ).',choices:['A vs. concentration (C)','A vs. wavelength (λ)','Concentration vs. time','Transmittance vs. molarity'],correct:1}
+    {q:'λ_max is defined as:',a:'The wavelength at which the solution absorbs light most strongly.',choices:['The wavelength of maximum emission','The wavelength most strongly absorbed','The longest wavelength visible','The wavelength where A = 0'],correct:1},
+    {q:'An absorption spectrum plots:',a:'Absorbance (A) vs. wavelength (λ).',choices:['A vs. concentration (C)','A vs. wavelength (λ)','Concentration vs. time','Transmittance vs. molarity'],correct:1},
+    {q:'In A = εlC, the path length l is typically:',a:'1.00 cm for standard cuvettes.',choices:['10 cm','1 mm','1.00 cm','Variable'],correct:2},
+    {q:'Why is λ_max chosen for absorbance measurements?',a:'It gives the greatest sensitivity — the largest change in A per unit change in concentration.',choices:['It is always in the visible range','It gives the greatest sensitivity to concentration changes','It is the easiest wavelength to measure','It equals ε at that point'],correct:1}
   ]},
   { id:'SPEC-2', group:"Spectrophotometry & Beer's Law", name:'Dilutions & standard curves', q:[
-    {q:'Dilution equation M₁V₁ = M₂V₂ is used to:',a:'Find the concentration or volume needed to prepare a diluted standard.',choices:['Calculate absorbance','Find concentration or volume for dilutions','Determine molar mass','Calculate freezing point depression'],correct:1},
-    {q:'A calibration (standard) curve plots:',a:'Absorbance (A) vs. concentration (C) — used to find unknown concentrations.',choices:['A vs. wavelength','A vs. concentration — to find unknowns','Concentration vs. time','pH vs. volume added'],correct:1},
-    {q:'From a linear standard curve (A = mC + b), an unknown concentration is found by:',a:'Measuring absorbance and solving C = (A − b) / m.',choices:['Reading directly from x-axis','Solving C = (A − b) / m','Using A = εlC with ε from tables','Extrapolating beyond the curve'],correct:1}
+    {q:'Dilution equation M₁V₁ = M₂V₂ is used to:',a:'Calculate the concentration or volume needed to prepare a diluted standard.',choices:['Calculate absorbance','Prepare diluted solutions','Determine molar mass','Calculate ΔTf'],correct:1},
+    {q:'A calibration (standard) curve plots:',a:'Absorbance (A) vs. known concentration (C) — used to find unknowns.',choices:['A vs. wavelength','A vs. concentration — used to find unknowns','Concentration vs. time','pH vs. volume added'],correct:1},
+    {q:'From a linear standard curve (A = mC + b), unknown concentration is found by:',a:'Measuring the absorbance and solving C = (A − b) / m.',choices:['Reading directly from x-axis','Solving C = (A − b) / m','Using A = εlC with ε from tables','Extrapolating beyond the curve'],correct:1},
+    {q:'A standard curve is linear only when:',a:"Beer's Law is obeyed — typically at low concentrations.",choices:['A > 2','The solution is colored','Beer\'s Law is obeyed (low concentrations)','λ = λ_max always'],correct:2},
+    {q:'If A = 0.450 and the standard curve gives C = 0.200×A + 0.010, the concentration is:',a:'C = 0.200×0.450 + 0.010 = 0.100 M',choices:['0.090 M','0.100 M','0.110 M','0.450 M'],correct:1}
   ]},
   { id:'RK-1', group:'Chemical Kinetics Lab (RK1-2)', name:'Reaction order & integrated rate laws', q:[
-    {q:'Which plot being linear indicates a first-order reaction?',a:'ln[A] vs. time.',choices:['[A] vs. time','ln[A] vs. time','1/[A] vs. time','[A]² vs. time'],correct:1},
-    {q:'A pseudo-rate constant k\' is used when:',a:'One reactant is in large excess so its concentration is essentially constant.',choices:['The reaction is very slow','One reactant is in large excess','Temperature is constant','A catalyst is used'],correct:1},
-    {q:'Crystal Violet experiments use spectrophotometry to track:',a:'Concentration changes over time via absorbance.',choices:['Temperature changes','pH changes','Concentration via absorbance','Pressure changes'],correct:2}
+    {q:'Which plot being linear indicates a first-order reaction?',a:'ln[A] vs. time — slope = −k.',choices:['[A] vs. time','ln[A] vs. time','1/[A] vs. time','[A]² vs. time'],correct:1},
+    {q:'A pseudo-rate constant k\' is used when:',a:'One reactant is in large excess so its concentration stays essentially constant.',choices:['The reaction is very slow','One reactant is in large excess','Temperature is held constant','A catalyst is present'],correct:1},
+    {q:'Crystal Violet experiments use spectrophotometry to track:',a:'Concentration changes over time via changes in absorbance.',choices:['Temperature changes','pH changes','Concentration via absorbance','Pressure changes'],correct:2},
+    {q:'In the Crystal Violet lab, absorbance is proportional to [CV⁺] because:',a:"Beer's Law: A = εlC — absorbance is directly proportional to concentration.",choices:['Crystal violet is a strong acid','A is inversely proportional to [CV⁺]','A = εlC (Beer\'s Law)','Absorbance is constant'],correct:2},
+    {q:'To confirm first-order kinetics, you plot ln(A) vs. time and expect:',a:'A straight line with slope = −k\'.',choices:['A curve','A straight line with slope = −k\'','A straight line with slope = +k','A parabola'],correct:1}
   ]},
   { id:'RK-2', group:'Chemical Kinetics Lab (RK1-2)', name:'Rate laws & initial rates method', q:[
-    {q:'To find reaction order from initial rates data:',a:'Compare how rate changes as concentration changes, using n = ln(rate₂/rate₁) / ln([A]₂/[A]₁).',choices:['Plot [A] vs. time','Use n = ln(r₂/r₁)/ln([A]₂/[A]₁)','Measure temperature at t=0','Calculate Ea from Arrhenius'],correct:1},
-    {q:'The overall reaction order is:',a:'The sum of individual orders (x + y + ...) in rate = k[A]ˣ[B]ʸ.',choices:['The largest individual order','The product x × y','The sum x + y + ...','Always 2'],correct:2}
+    {q:'To find reaction order from initial rates data:',a:'Compare how the rate changes as concentration changes: n = ln(r₂/r₁) / ln([A]₂/[A]₁).',choices:['Plot [A] vs. time','n = ln(r₂/r₁)/ln([A]₂/[A]₁)','Measure temperature at t=0','Calculate Ea from Arrhenius equation'],correct:1},
+    {q:'The overall reaction order is:',a:'The sum of individual orders (x + y + ...) in rate = k[A]ˣ[B]ʸ.',choices:['The largest individual order','The product x×y','The sum x + y + ...','Always second order'],correct:2},
+    {q:'If tripling [A] causes the rate to triple, the reaction is _______ order in A.',a:'First order — rate ∝ [A]¹.',choices:['Zero order','First order','Second order','Third order'],correct:1},
+    {q:'The rate constant k has units of M⁻¹s⁻¹ for a reaction that is:',a:'Second order overall.',choices:['Zero order','First order','Second order','Third order'],correct:2}
   ]},
   { id:'EQB-1', group:'Chemical Equilibrium Lab (EQB)', name:"Le Chatelier's & ICE tables", q:[
-    {q:"Le Chatelier's Principle states that a system at equilibrium will:",a:'Shift to counteract any imposed change.',choices:['Always shift right when disturbed','Shift to counteract any imposed change','Stop reacting','Reach a new equilibrium with the same K'],correct:1},
-    {q:'In an ICE table, the C row represents:',a:'The change in concentration based on stoichiometric ratios.',choices:['Current concentration','The equilibrium constant','Change in concentration (stoichiometric ratios)','Correction factor'],correct:2},
-    {q:'Dynamic equilibrium means:',a:'Forward and reverse reactions continue at equal rates; concentrations are constant.',choices:['Reactions have stopped','Only forward reaction occurs','Forward = reverse rates; concentrations constant','K = 1'],correct:2}
+    {q:"Le Chatelier's Principle states that a system at equilibrium will:",a:'Shift to counteract any stress imposed on it.',choices:['Always shift right when disturbed','Shift to counteract any imposed stress','Stop reacting','Reach a new equilibrium with the same K'],correct:1},
+    {q:'In a RICE table, the C row represents:',a:'The change in concentration, based on stoichiometric ratios.',choices:['Current concentration','The equilibrium constant K','Change in concentration (stoichiometric ratios)','A correction factor'],correct:2},
+    {q:'Dynamic equilibrium means:',a:'Forward and reverse reactions continue at equal rates; concentrations are constant.',choices:['Reactions have stopped completely','Only the forward reaction occurs','Forward = reverse rates; concentrations constant','K = 1'],correct:2},
+    {q:'Adding more reactant to a system at equilibrium will:',a:'Shift the equilibrium right (toward products) to consume the added reactant.',choices:['Have no effect','Shift equilibrium left','Shift equilibrium right','Change the value of K'],correct:2},
+    {q:'Increasing temperature for an endothermic reaction at equilibrium:',a:'Shifts equilibrium right — heat is like a reactant; adding it favors products.',choices:['Shifts left','Shifts right','No shift','Decreases K'],correct:1}
   ]},
-  { id:'EQB-2', group:'Chemical Equilibrium Lab (EQB)', name:'Iron thiocyanate & equilibrium monitoring', q:[
-    {q:'In the iron thiocyanate equilibrium lab, what indicates the extent of reaction?',a:'The intensity of the red-orange color from the FeSCN²⁺ complex.',choices:['Temperature change','pH change','Intensity of red-orange FeSCN²⁺ color','Gas bubble formation'],correct:3},
-    {q:'Adding more Fe³⁺ to the FeSCN²⁺ equilibrium shifts the reaction:',a:'Right — more FeSCN²⁺ forms, deepening the red color.',choices:['Left (less product)','Right (more FeSCN²⁺)','No shift','Increases K'],correct:1}
+  { id:'EQB-2', group:'Chemical Equilibrium Lab (EQB)', name:'Iron thiocyanate equilibrium', q:[
+    {q:'In the iron thiocyanate lab, what indicates the extent of reaction?',a:'The intensity of the red-orange color from the FeSCN²⁺ complex.',choices:['Temperature change','pH change','Intensity of red-orange FeSCN²⁺ color','Gas bubble formation'],correct:3},
+    {q:'Adding more Fe³⁺ to the FeSCN²⁺ equilibrium shifts the reaction:',a:'Right — more FeSCN²⁺ forms (deeper red color).',choices:['Left (less FeSCN²⁺)','Right (more FeSCN²⁺)','No shift','Increases K'],correct:1},
+    {q:'Adding NaOH to the Fe³⁺/SCN⁻/FeSCN²⁺ equilibrium causes:',a:'Fe³⁺ is precipitated as Fe(OH)₃ — equilibrium shifts left, color fades.',choices:['Deeper red color (shift right)','Color fades — equilibrium shifts left','No change in color','K increases'],correct:1},
+    {q:'In the iron thiocyanate lab, spectrophotometry is used to:',a:'Measure [FeSCN²⁺] at equilibrium via its absorbance.',choices:['Measure temperature','Measure [H⁺]','Measure [FeSCN²⁺] via absorbance','Determine the rate constant'],correct:2}
   ]},
   { id:'ST-1', group:'Seawater Titrations (ST1-3)', name:'Titration curves & equivalence points', q:[
-    {q:'The equivalence point on a pH titration curve is found where:',a:'The steepest pH change occurs (inflection point).',choices:['pH = 7.00','pH = pKa','Steepest pH change (inflection point)','Volume of titrant is minimized'],correct:2},
-    {q:'The half-equivalence point is significant because:',a:'pH = pKa at that point, allowing direct determination of Ka.',choices:['pH = 7','Half the titrant has been added and pH = pKa','Buffer capacity is zero','The solution becomes neutral'],correct:1}
+    {q:'The equivalence point on a pH titration curve is located at:',a:'The steepest inflection point — the greatest change in pH per mL of titrant.',choices:['pH = 7.00 always','pH = pKa','Steepest inflection point','Minimum volume of titrant'],correct:2},
+    {q:'The half-equivalence point is significant because:',a:'pH = pKa there — you can directly determine Ka.',choices:['pH = 7 at half-equivalence','pH = pKa, giving Ka directly','Buffer capacity is zero','Solution becomes neutral'],correct:1},
+    {q:'In a strong acid–strong base titration, the equivalence point occurs at:',a:'pH = 7.00 — only water and neutral salt are present.',choices:['pH = pKa','pH < 7','pH = 7','pH > 7'],correct:2},
+    {q:'In a weak acid–strong base titration, the equivalence point occurs at:',a:'pH > 7 — the conjugate base of the weak acid hydrolyzes in water.',choices:['pH = 7','pH < 7','pH > 7','pH = pKa'],correct:2}
   ]},
   { id:'ST-2', group:'Seawater Titrations (ST1-3)', name:'Primary & secondary standards', q:[
-    {q:'A primary standard must be:',a:'High purity, stable, and have a known molar mass for accurate standardization.',choices:['Any soluble salt','High purity, stable, known MW','Acidic only','A strong acid or base'],correct:1},
-    {q:'A secondary standard is:',a:'A solution whose concentration is determined by titration against a primary standard.',choices:['A solid of known mass','Determined by titration against a primary standard','Always NaOH','More accurate than a primary standard'],correct:1}
+    {q:'A primary standard must be:',a:'High purity, stable, non-hygroscopic, with a known molar mass for accurate standardization.',choices:['Any soluble salt','High purity, stable, known MW, non-hygroscopic','An acidic substance only','A strong acid or base'],correct:1},
+    {q:'A secondary standard is:',a:'A solution standardized by titration against a primary standard.',choices:['A solid of known mass','Standardized against a primary standard','Always NaOH','More accurate than a primary standard'],correct:1},
+    {q:'Potassium hydrogen phthalate (KHP) is commonly used as a primary standard for:',a:'Standardizing NaOH solutions — KHP is a monoprotic acid that reacts 1:1 with NaOH.',choices:['Standardizing HCl','Standardizing NaOH solutions','Determining Ksp','Calibrating a pH meter'],correct:1},
+    {q:'Why is NaOH not used as a primary standard?',a:'NaOH is hygroscopic and absorbs CO₂ from air, making its purity unreliable.',choices:['NaOH is too expensive','NaOH is hygroscopic and absorbs CO₂, making purity unreliable','NaOH dissolves glass','NaOH reacts with all acids'],correct:1}
   ]},
   { id:'ST-3', group:'Seawater Titrations (ST1-3)', name:'Polyprotic acid curves & derivative plots', q:[
     {q:'A diprotic acid titration curve has:',a:'Two equivalence points — one for each ionizable proton.',choices:['One equivalence point','Two equivalence points','Three inflection points','No clear equivalence point'],correct:1},
-    {q:'A first derivative (ΔpH/ΔmL) plot is used to:',a:'Precisely locate the equivalence point as the maximum peak.',choices:['Calculate Ka','Precisely locate the equivalence point','Determine initial concentration','Find the pKb'],correct:1}
+    {q:'A first derivative (ΔpH/ΔV) plot is used to:',a:'Precisely locate the equivalence point as the peak maximum.',choices:['Calculate Ka','Precisely locate the equivalence point as the peak','Determine initial concentration directly','Find the pKb'],correct:1},
+    {q:'For a diprotic acid H₂A, the two pKa values can be found from the titration curve at:',a:'The two half-equivalence points (midpoints of each buffering region).',choices:['The two equivalence points','The two half-equivalence points','The pH = 7 crossing','The steepest slopes'],correct:1},
+    {q:'In the Seawater Titration lab, the total alkalinity is related to:',a:'The amount of base (carbonate/bicarbonate) that neutralizes added acid.',choices:['Salinity only','The concentration of Na⁺','The amount of carbonate/bicarbonate base','The temperature of seawater'],correct:2}
   ]}
 ];
 
